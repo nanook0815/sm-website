@@ -32,7 +32,7 @@ import { services } from '~/data/services'
               class="h-8 w-8 text-bronze"
             >
               <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <g class="origin-[3px_11px] rotate-[-14deg] group-hover:[animation:clap-shut_0.35s_ease-out_forwards]">
+              <g class="origin-[3px_11px] rotate-[-6deg] group-hover:[animation:clap-shut_0.35s_ease-out_forwards]">
                 <path
                   d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"
                 />
