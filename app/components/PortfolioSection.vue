@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { portfolioItems, portfolioCategories, type PortfolioCategory } from '~/data/portfolio'
+import { portfolioItems, type PortfolioCategory } from '~/data/portfolio'
 
 const activeCategory = ref<PortfolioCategory | 'Alle'>('Alle')
+
+const portfolioCategories = computed<Array<PortfolioCategory | 'Alle'>>(() => [
+  'Alle',
+  ...new Set(portfolioItems.map((item) => item.category))
+])
 
 const filteredItems = computed(() => {
   if (activeCategory.value === 'Alle') return portfolioItems
@@ -10,12 +15,12 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <section id="portfolio" class="bg-gray-50 py-24">
+  <section id="portfolio" class="border-t border-line bg-paper py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+      <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
         Portfolio
       </h2>
-      <p class="mt-4 max-w-2xl text-gray-600">
+      <p class="mt-4 max-w-2xl leading-[1.7] text-body">
         Eine Auswahl aktueller Projekte aus Video, Foto und Editing.
       </p>
 
@@ -24,10 +29,12 @@ const filteredItems = computed(() => {
           v-for="category in portfolioCategories"
           :key="category"
           type="button"
-          class="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-          :class="activeCategory === category
-            ? 'bg-gray-900 text-white'
-            : 'bg-white text-gray-600 hover:bg-gray-100'"
+          class="rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+          :class="
+            activeCategory === category
+              ? 'border-ink bg-ink text-paper'
+              : 'border-line text-body hover:border-ink/40'
+          "
           @click="activeCategory = category"
         >
           {{ category }}
@@ -38,21 +45,30 @@ const filteredItems = computed(() => {
         <article
           v-for="item in filteredItems"
           :key="item.id"
-          class="group overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200"
+          class="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line"
         >
           <div
-            class="flex aspect-video items-center justify-center bg-gradient-to-br from-gray-800 to-gray-950 text-sm font-medium uppercase tracking-widest text-gray-400"
+            class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
           >
             {{ item.category }}
           </div>
           <div class="p-5">
-            <h3 class="font-semibold text-gray-900">
+            <h3 class="font-semibold tracking-[-0.01em] text-ink">
               {{ item.title }}
             </h3>
-            <p class="text-sm text-gray-500">{{ item.client }}</p>
-            <p class="mt-2 text-sm text-gray-600">
+            <p class="text-sm text-grey">{{ item.client }}</p>
+            <p class="mt-2 text-sm leading-relaxed text-body">
               {{ item.description }}
             </p>
+            <a
+              v-if="item.link"
+              :href="item.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 inline-block text-sm font-medium text-bronze hover:underline"
+            >
+              Projekt ansehen →
+            </a>
           </div>
         </article>
       </div>
