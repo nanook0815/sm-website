@@ -6,56 +6,26 @@ export interface PortfolioItem {
   client: string
   category: PortfolioCategory
   description: string
+  link?: string
 }
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    id: 'imagefilm-cafe-nordlicht',
+    id: 'erklaervideo-weca',
+    title: 'Erklärvideo',
+    client: 'weca',
+    category: 'Video',
+    description:
+      'Kurzes, humorvolles Erklärvideo für die Anbieter-Kampagne von weca – Konzept, Dreh und Schnitt aus einer Hand.',
+    link: 'https://www.weca.care/anbieter/'
+  },
+  {
+    id: 'imagefilm-relax4me',
     title: 'Imagefilm',
-    client: 'Café Nordlicht',
+    client: 'relax4me – Maderotherapie',
     category: 'Video',
-    description: 'Konzept, Dreh und Schnitt eines Imagefilms für ein lokales Café.'
-  },
-  {
-    id: 'hochzeit-sarah-tom',
-    title: 'Hochzeitsfilm',
-    client: 'Sarah & Tom',
-    category: 'Video',
-    description: 'Ganztägige Begleitung und emotionaler Hochzeitsfilm.'
-  },
-  {
-    id: 'musikvideo-artist-xy',
-    title: 'Musikvideo',
-    client: 'Artist XY',
-    category: 'Editing',
-    description: 'Schnitt und Colorgrading eines Musikvideos aus Multicam-Material.'
-  },
-  {
-    id: 'event-musikfestival',
-    title: 'Eventfotografie',
-    client: 'Musikfestival',
-    category: 'Foto',
-    description: 'Fotografische Begleitung eines zweitägigen Musikfestivals.'
-  },
-  {
-    id: 'produktfotos-marke-z',
-    title: 'Produktfotografie',
-    client: 'Marke Z',
-    category: 'Foto',
-    description: 'Produktshooting für Onlineshop und Social-Media-Kanäle.'
-  },
-  {
-    id: 'reels-brand-social',
-    title: 'Social-Media-Reels',
-    client: 'Brand Social',
-    category: 'Editing',
-    description: 'Kurzformatige Reels-Serie inklusive Schnitt und Untertitel.'
+    description:
+      'Video-Produktion für die Landingpage einer Wellness-Praxis, zu sehen direkt auf der Website.',
+    link: 'https://relax4me.info/maderotherapie/'
   }
-]
-
-export const portfolioCategories: Array<PortfolioCategory | 'Alle'> = [
-  'Alle',
-  'Video',
-  'Foto',
-  'Editing'
 ]
