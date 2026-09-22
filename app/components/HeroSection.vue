@@ -14,7 +14,14 @@ const timelineTicks = Array.from({ length: 24 })
         />
       </div>
       <div class="absolute inset-x-0 bottom-10 h-px bg-paper/10"></div>
-      <div class="absolute bottom-9 h-3 w-px bg-bronze-light/50 [animation:timeline-scan_22s_linear_infinite]"></div>
+      <div
+        class="absolute bottom-9 flex w-px flex-col items-center [animation:timeline-scan_22s_linear_infinite]"
+      >
+        <span
+          class="h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent border-t-bronze-light/80"
+        ></span>
+        <span class="h-3 w-px bg-bronze-light/50"></span>
+      </div>
     </div>
 
     <div class="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-28 sm:px-6 sm:py-36">
