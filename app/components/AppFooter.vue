@@ -2,9 +2,9 @@
 const year = new Date().getFullYear()
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://instagram.com/' },
-  { label: 'YouTube', href: 'https://youtube.com/' },
-  { label: 'Vimeo', href: 'https://vimeo.com/' }
+  { label: 'Instagram', href: 'https://www.instagram.com/chris.steinert.media/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@SteinertMedia' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/christoph-steinert-media' }
 ]
 </script>
 
