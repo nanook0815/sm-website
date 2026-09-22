@@ -3,7 +3,7 @@ import { testimonials } from '~/data/testimonials'
 </script>
 
 <template>
-  <section id="kundenstimmen" class="border-t border-line bg-paper py-24">
+  <section id="kundenstimmen" class="border-t border-line py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
         Kundenstimmen
@@ -14,12 +14,14 @@ import { testimonials } from '~/data/testimonials'
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2">
         <figure
-          v-for="testimonial in testimonials"
+          v-for="(testimonial, index) in testimonials"
           :key="testimonial.id"
-          class="rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line"
+          v-reveal
+          class="flex flex-col rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line"
+          :style="{ transitionDelay: `${index * 100}ms` }"
         >
           <blockquote class="leading-[1.7] text-body">"{{ testimonial.quote }}"</blockquote>
-          <figcaption class="mt-4 flex items-center gap-3">
+          <figcaption class="mt-auto flex items-center gap-3 pt-4">
             <img
               v-if="testimonial.avatar"
               :src="testimonial.avatar"
