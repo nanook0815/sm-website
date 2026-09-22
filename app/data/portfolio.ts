@@ -7,6 +7,7 @@ export interface PortfolioItem {
   category: PortfolioCategory
   description: string
   link?: string
+  thumbnail?: string
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -17,7 +18,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Video',
     description:
       'Kurzes, humorvolles Erklärvideo für die Anbieter-Kampagne von weca – Konzept, Dreh und Schnitt aus einer Hand.',
-    link: 'https://www.weca.care/anbieter/'
+    link: 'https://www.weca.care/anbieter/',
+    thumbnail: '/images/portfolio/video/WECA_erklärvideo_Thumbnail.png'
   },
   {
     id: 'imagefilm-relax4me',
@@ -26,6 +28,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'Video',
     description:
       'Video-Produktion für die Landingpage einer Wellness-Praxis, zu sehen direkt auf der Website.',
-    link: 'https://relax4me.info/maderotherapie/'
+    link: 'https://relax4me.info/maderotherapie/',
+    thumbnail: '/images/portfolio/video/AH001_Maderotherapie.00_01_57_11.jpg'
   }
 ]

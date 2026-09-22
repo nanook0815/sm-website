@@ -47,11 +47,45 @@ const filteredItems = computed(() => {
           :key="item.id"
           class="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line"
         >
-          <div
-            class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+          <a
+            v-if="item.link"
+            :href="item.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative block aspect-video overflow-hidden"
           >
-            {{ item.category }}
-          </div>
+            <img
+              v-if="item.thumbnail"
+              :src="item.thumbnail"
+              :alt="`${item.title} – ${item.client}`"
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div
+              v-else
+              class="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+            >
+              {{ item.category }}
+            </div>
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-ink/0 text-sm font-medium text-paper opacity-0 transition-all duration-300 group-hover:bg-ink/50 group-hover:opacity-100"
+            >
+              Projekt ansehen →
+            </div>
+          </a>
+          <template v-else>
+            <img
+              v-if="item.thumbnail"
+              :src="item.thumbnail"
+              :alt="`${item.title} – ${item.client}`"
+              class="aspect-video w-full object-cover"
+            />
+            <div
+              v-else
+              class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+            >
+              {{ item.category }}
+            </div>
+          </template>
           <div class="p-5">
             <h3 class="font-semibold tracking-[-0.01em] text-ink">
               {{ item.title }}
