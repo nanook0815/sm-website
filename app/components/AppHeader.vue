@@ -3,6 +3,7 @@ const navLinks = [
   { label: 'Leistungen', to: '/#leistungen' },
   { label: 'Portfolio', to: '/#portfolio' },
   { label: 'Über mich', to: '/#ueber-mich' },
+  { label: 'Kundenstimmen', to: '/#kundenstimmen' },
   { label: 'Kontakt', to: '/#kontakt' }
 ]
 

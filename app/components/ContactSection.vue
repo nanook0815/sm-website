@@ -9,8 +9,8 @@ const contactEmail = 'info@steinertmedia.de'
         Lass uns dein Projekt umsetzen
       </h2>
       <p class="mx-auto mt-4 max-w-xl leading-[1.7] text-paper/75">
-        Ob Imagefilm, Hochzeitsvideo, Musikvideo oder Fotoshooting – schreib mir kurz worum es geht,
-        ich melde mich zeitnah zurück.
+        Ob Imagefilm oder Fotoshooting – schreib mir kurz worum es geht, ich melde mich zeitnah
+        zurück.
       </p>
 
       <div class="mt-10 flex justify-center">

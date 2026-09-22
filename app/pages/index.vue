@@ -10,6 +10,7 @@ useHead({
     <ServicesSection />
     <PortfolioSection />
     <AboutSection />
+    <TestimonialsSection />
     <ContactSection />
   </div>
 </template>

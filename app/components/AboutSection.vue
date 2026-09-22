@@ -18,9 +18,9 @@
           Projekte von der ersten Idee über den Dreh bis zum fertigen Schnitt.
         </p>
         <p class="mt-4 leading-[1.7] text-body">
-          Mein Fokus liegt auf sauberem, emotionalem Storytelling – egal ob Imagefilm, Musikvideo,
-          Hochzeitsfilm oder Social-Media-Content. Zusätzlich zum Editing biete ich Video- und
-          Fotoproduktion aus einer Hand an.
+          Mein Fokus liegt auf sauberem, emotionalem Storytelling – egal ob Imagefilm oder
+          Social-Media-Content. Zusätzlich zum Editing biete ich Video- und Fotoproduktion aus
+          einer Hand an.
         </p>
         <ul class="mt-6 space-y-2 text-sm text-body">
           <li class="flex items-center gap-2">
