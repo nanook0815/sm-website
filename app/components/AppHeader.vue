@@ -14,10 +14,14 @@ function closeMenu() {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/90 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-paper/10 bg-ink/95 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-      <a href="/#top" class="text-lg font-bold tracking-tight text-white">
-        Steinertmedia
+      <a href="/#top" class="flex items-center">
+        <img
+          src="/images/brand/export/logo-horizontal-dunkel.svg"
+          alt="SteinertMedia"
+          class="h-7 w-auto"
+        />
       </a>
 
       <nav class="hidden gap-8 md:flex">
@@ -25,7 +29,7 @@ function closeMenu() {
           v-for="link in navLinks"
           :key="link.to"
           :href="link.to"
-          class="text-sm font-medium text-gray-300 transition-colors hover:text-white"
+          class="text-sm font-medium text-paper/70 transition-colors hover:text-paper"
         >
           {{ link.label }}
         </a>
@@ -33,37 +37,55 @@ function closeMenu() {
 
       <a
         href="/#kontakt"
-        class="hidden rounded-md bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-400 md:inline-block"
+        class="hidden rounded-md bg-bronze-light px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110 md:inline-block"
       >
         Projekt anfragen
       </a>
 
       <button
         type="button"
-        class="text-gray-200 md:hidden"
+        class="text-paper md:hidden"
         aria-label="Menü öffnen"
         @click="isMenuOpen = !isMenuOpen"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            v-if="!isMenuOpen"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+          <path
+            v-else
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
         </svg>
       </button>
     </div>
 
-    <nav v-if="isMenuOpen" class="border-t border-gray-800 bg-gray-950 px-4 py-4 md:hidden">
+    <nav v-if="isMenuOpen" class="border-t border-paper/10 bg-ink px-4 py-4 md:hidden">
       <a
         v-for="link in navLinks"
         :key="link.to"
         :href="link.to"
-        class="block py-2 text-sm font-medium text-gray-300 hover:text-white"
+        class="block py-2 text-sm font-medium text-paper/70 hover:text-paper"
         @click="closeMenu"
       >
         {{ link.label }}
       </a>
       <a
         href="/#kontakt"
-        class="mt-2 block rounded-md bg-orange-500 px-4 py-2 text-center text-sm font-semibold text-white"
+        class="mt-2 block rounded-md bg-bronze-light px-4 py-2 text-center text-sm font-semibold text-ink"
         @click="closeMenu"
       >
         Projekt anfragen
