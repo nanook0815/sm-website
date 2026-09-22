@@ -32,7 +32,7 @@ import { services } from '~/data/services'
               class="h-8 w-8 text-bronze"
             >
               <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <g class="origin-[3px_11px] rotate-[-14deg] transition-transform duration-300 ease-out group-hover:rotate-0">
+              <g class="origin-[3px_11px] rotate-[-14deg] group-hover:[animation:clap-shut_0.35s_ease-out_forwards]">
                 <path
                   d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"
                 />
@@ -42,7 +42,7 @@ import { services } from '~/data/services'
               <g
                 aria-hidden="true"
                 stroke-width="1.5"
-                class="origin-right opacity-0 group-hover:[animation:sound-tick_0.5s_ease-out]"
+                class="origin-right opacity-0 group-hover:[animation:sound-tick_0.5s_ease-out_0.35s]"
               >
                 <path d="M22 8.5 23.8 7" />
                 <path d="M22 13.5 23.8 15" />
