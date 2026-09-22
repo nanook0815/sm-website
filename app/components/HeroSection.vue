@@ -1,6 +1,23 @@
+<script setup lang="ts">
+const timelineTicks = Array.from({ length: 24 })
+</script>
+
 <template>
   <section id="top" class="relative overflow-hidden bg-ink text-paper">
-    <div class="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-28 sm:px-6 sm:py-36">
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 overflow-hidden" aria-hidden="true">
+      <div class="absolute inset-x-0 bottom-10 flex h-8 items-end justify-between px-4 sm:px-6">
+        <span
+          v-for="(tick, index) in timelineTicks"
+          :key="index"
+          class="w-px bg-paper/10"
+          :class="index % 4 === 0 ? 'h-full bg-paper/15' : 'h-1/2'"
+        />
+      </div>
+      <div class="absolute inset-x-0 bottom-10 h-px bg-paper/10"></div>
+      <div class="absolute bottom-9 h-3 w-px bg-bronze-light/50 [animation:timeline-scan_22s_linear_infinite]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-28 sm:px-6 sm:py-36">
       <p class="font-mono text-sm font-medium uppercase tracking-widest text-bronze-light">
         Video · Foto · Editing
       </p>
