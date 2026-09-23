@@ -4,8 +4,7 @@
       <img
         src="/images/brand/export/icon-fokusfeld-graphit-einfarbig.svg"
         alt=""
-        class="absolute left-1/2 top-1/2 w-[130vw] max-w-none opacity-[0.04] select-none md:w-[900px]"
-        :style="{ transform: `translate(-50%, calc(-50% + ${scrollOffset * 0.05}px))` }"
+        class="parallax-bg absolute left-1/2 top-1/2 w-[130vw] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.04] select-none md:w-[900px]"
       />
     </div>
     <AppHeader />
@@ -15,25 +14,3 @@
     <AppFooter />
   </div>
 </template>
-
-<script setup lang="ts">
-const scrollOffset = ref(0)
-let ticking = false
-
-function onScroll() {
-  if (ticking) return
-  ticking = true
-  requestAnimationFrame(() => {
-    scrollOffset.value = window.scrollY
-    ticking = false
-  })
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
-})
-</script>
