@@ -49,8 +49,13 @@ const filteredItems = computed(() => {
           class="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line"
           :style="{ transitionDelay: `${Math.min(index, 6) * 80}ms` }"
         >
+          <PhotoStrip
+            v-if="item.images"
+            :images="item.images"
+            :title="`${item.title} – ${item.client}`"
+          />
           <a
-            v-if="item.link"
+            v-else-if="item.link"
             :href="item.link"
             target="_blank"
             rel="noopener noreferrer"

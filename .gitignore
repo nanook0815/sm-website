@@ -22,3 +22,8 @@ logs
 .env
 .env.*
 !.env.example
+
+# Foto-Originale (zu groß fürs Repo) – die Website nutzt nur die
+# verkleinerten Kopien in sv-kralenriede/ und hochzeiten/
+public/images/portfolio/foto/SV Kralenriede/
+public/images/portfolio/foto/Hochzeit/
