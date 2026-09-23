@@ -15,7 +15,7 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <section id="portfolio" class="border-t border-line py-24">
+  <section id="portfolio" class="py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
         Portfolio

@@ -36,16 +36,16 @@ const timelineTicks = Array.from({ length: 24 })
       </p>
       <div class="flex flex-wrap gap-4 pt-2">
         <a
-          href="#portfolio"
+          href="mailto:info@steinertmedia.de?subject=Projektanfrage"
           class="rounded-md bg-bronze-light px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
         >
-          Portfolio ansehen
+          Kontakt aufnehmen
         </a>
         <a
-          href="#kontakt"
+          href="#portfolio"
           class="rounded-md border border-paper/30 px-6 py-3 text-sm font-semibold text-paper transition-colors hover:border-paper/60"
         >
-          Projekt anfragen
+          Portfolio ansehen
         </a>
       </div>
     </div>

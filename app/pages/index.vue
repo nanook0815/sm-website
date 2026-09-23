@@ -7,7 +7,7 @@ useHead({
 <template>
   <div>
     <HeroSection />
-    <ServicesSection />
+    <CameraZoomSection />
     <PortfolioSection />
     <AboutSection />
     <TestimonialsSection />
