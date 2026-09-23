@@ -1,5 +1,5 @@
 <template>
-  <section id="ueber-mich" class="border-t border-line py-24">
+  <section id="ueber-mich" class="py-24">
     <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
       <div v-reveal class="aspect-square overflow-hidden rounded-xl bg-line/30">
         <img

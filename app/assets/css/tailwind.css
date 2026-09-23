@@ -73,6 +73,62 @@
   }
 }
 
+@keyframes filament-draw {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 10;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fokusfeld-Tooltip: rutscht diagonal aus Richtung der jeweiligen Ecke ein,
+   statt einfach nur einzublenden. */
+.tooltip-tl-enter-active,
+.tooltip-tl-leave-active,
+.tooltip-tr-enter-active,
+.tooltip-tr-leave-active,
+.tooltip-bl-enter-active,
+.tooltip-bl-leave-active,
+.tooltip-br-enter-active,
+.tooltip-br-leave-active,
+.tooltip-bottom-enter-active,
+.tooltip-bottom-leave-active {
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.25s ease-out;
+}
+.tooltip-tl-enter-from,
+.tooltip-tl-leave-to {
+  opacity: 0;
+  transform: translate(-10px, -10px);
+}
+.tooltip-tr-enter-from,
+.tooltip-tr-leave-to {
+  opacity: 0;
+  transform: translate(10px, -10px);
+}
+.tooltip-bl-enter-from,
+.tooltip-bl-leave-to {
+  opacity: 0;
+  transform: translate(-10px, 10px);
+}
+.tooltip-br-enter-from,
+.tooltip-br-leave-to {
+  opacity: 0;
+  transform: translate(10px, 10px);
+}
+.tooltip-bottom-enter-from,
+.tooltip-bottom-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 @keyframes timeline-scan {
   0% {
     left: -2%;

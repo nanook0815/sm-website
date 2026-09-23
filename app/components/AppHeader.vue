@@ -7,6 +7,9 @@ const navLinks = [
   { label: 'Kontakt', to: '/#kontakt' }
 ]
 
+const contactEmail = 'info@steinertmedia.de'
+const contactHref = `mailto:${contactEmail}?subject=Projektanfrage`
+
 const isMenuOpen = ref(false)
 
 function closeMenu() {
@@ -37,10 +40,10 @@ function closeMenu() {
       </nav>
 
       <a
-        href="/#kontakt"
+        :href="contactHref"
         class="hidden rounded-md bg-bronze-light px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110 md:inline-block"
       >
-        Projekt anfragen
+        Kontakt aufnehmen
       </a>
 
       <button
@@ -85,11 +88,11 @@ function closeMenu() {
         {{ link.label }}
       </a>
       <a
-        href="/#kontakt"
+        :href="contactHref"
         class="mt-2 block rounded-md bg-bronze-light px-4 py-2 text-center text-sm font-semibold text-ink"
         @click="closeMenu"
       >
-        Projekt anfragen
+        Kontakt aufnehmen
       </a>
     </nav>
   </header>
