@@ -90,6 +90,28 @@
   }
 }
 
+/* Hintergrund-Icon: leichter Parallax-Effekt. Die Bewegung ist direkt an die
+   Scroll-Position gekoppelt (ohne JavaScript) und bleibt dadurch auch beim
+   schnellen Scrollen auf dem Handy flüssig. Über die ganze Seite wandert das
+   Icon nur 50vh nach oben, also deutlich langsamer als der Inhalt. */
+@keyframes parallax-bg {
+  from {
+    transform: translate(-50%, calc(-50% + 25vh));
+  }
+  to {
+    transform: translate(-50%, calc(-50% - 25vh));
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax-bg {
+      animation: parallax-bg linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
