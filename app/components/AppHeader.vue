@@ -28,7 +28,7 @@ function closeMenu() {
         />
       </a>
 
-      <nav class="hidden gap-8 md:flex">
+      <nav class="hidden gap-8 lg:flex">
         <a
           v-for="link in navLinks"
           :key="link.to"
@@ -41,14 +41,14 @@ function closeMenu() {
 
       <a
         :href="contactHref"
-        class="hidden rounded-md bg-bronze-light px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110 md:inline-block"
+        class="hidden rounded-md bg-bronze-light px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110 lg:inline-block"
       >
         Kontakt aufnehmen
       </a>
 
       <button
         type="button"
-        class="text-paper md:hidden"
+        class="text-paper lg:hidden"
         aria-label="Menü öffnen"
         @click="isMenuOpen = !isMenuOpen"
       >
@@ -77,7 +77,7 @@ function closeMenu() {
       </button>
     </div>
 
-    <nav v-if="isMenuOpen" class="border-t border-paper/10 bg-ink px-4 py-4 md:hidden">
+    <nav v-if="isMenuOpen" class="border-t border-paper/10 bg-ink px-4 py-4 lg:hidden">
       <a
         v-for="link in navLinks"
         :key="link.to"
