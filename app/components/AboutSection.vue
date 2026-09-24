@@ -1,10 +1,14 @@
 <template>
   <section id="ueber-mich" class="py-24">
     <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
-      <div v-reveal class="aspect-square overflow-hidden rounded-xl bg-line/30">
+      <div
+        v-reveal
+        class="aspect-square overflow-hidden rounded-xl bg-line/30 shadow-sm ring-1 ring-line"
+      >
         <img
           src="/images/about/SM011.1-247.jpg"
           alt="Chris, Gründer von SteinertMedia"
+          loading="lazy"
           class="h-full w-full object-cover"
         />
       </div>

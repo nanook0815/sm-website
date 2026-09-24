@@ -16,7 +16,7 @@ const contactEmail = 'info@steinertmedia.de'
       <div class="mt-10 flex justify-center">
         <a
           :href="`mailto:${contactEmail}`"
-          class="rounded-md bg-bronze-light px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
+          class="rounded-md border border-ink/10 bg-bronze-light px-6 py-3 text-sm font-semibold tracking-[-0.01em] text-ink transition hover:border-ink/20 hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
         >
           {{ contactEmail }}
         </a>
