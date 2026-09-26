@@ -17,11 +17,16 @@ import { testimonials } from '~/data/testimonials'
           v-for="(testimonial, index) in testimonials"
           :key="testimonial.id"
           v-reveal
-          class="flex flex-col rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line"
+          class="testimonial-card relative flex flex-col overflow-hidden rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line"
           :style="{ transitionDelay: `${index * 100}ms` }"
         >
-          <blockquote class="leading-[1.7] text-body">"{{ testimonial.quote }}"</blockquote>
-          <figcaption class="mt-auto flex items-center gap-3 pt-4">
+          <Icon
+            name="lucide:quote"
+            class="testimonial-quote absolute -right-2 -top-2 h-20 w-20 text-bronze/10 transition-all duration-300"
+            aria-hidden="true"
+          />
+          <blockquote class="relative leading-[1.7] text-body">"{{ testimonial.quote }}"</blockquote>
+          <figcaption class="relative mt-auto flex items-center gap-3 pt-4">
             <img
               v-if="testimonial.avatar"
               :src="testimonial.avatar"
@@ -47,3 +52,10 @@ import { testimonials } from '~/data/testimonials'
     </div>
   </section>
 </template>
+
+<style scoped>
+.testimonial-card:hover .testimonial-quote {
+  color: rgba(154, 111, 63, 0.16);
+  transform: scale(1.024);
+}
+</style>

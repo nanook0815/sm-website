@@ -27,3 +27,8 @@ logs
 # verkleinerten Kopien in sv-kralenriede/ und hochzeiten/
 public/images/portfolio/foto/SV Kralenriede/
 public/images/portfolio/foto/Hochzeit/
+
+# Impeccable-Skill: plattformspezifische Binary, wird pro Maschine
+# heruntergeladen/vorgehalten statt versioniert
+.claude/skills/impeccable/scripts/bin/
+.github/skills/impeccable/scripts/bin/
