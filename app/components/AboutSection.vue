@@ -2,18 +2,19 @@
   <section id="ueber-mich" class="py-24">
 
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div
-        v-reveal
-        class="about-photo relative aspect-[4/3] overflow-hidden rounded-xl shadow-sm ring-1 ring-line sm:aspect-[16/9] lg:aspect-[21/9]"
-      >
-        <img
-          src="/images/about/SM011.1-247.jpg"
-          alt="Chris, Gründer von SteinertMedia"
-          loading="lazy"
-          class="h-full w-full object-cover"
-        />
-        <div class="about-scrim pointer-events-none absolute inset-0"></div>
-        <div class="absolute inset-x-0 bottom-0 z-10 px-6 py-8 sm:px-10 sm:py-10">
+      <div v-reveal class="relative overflow-hidden rounded-xl shadow-sm ring-1 ring-line">
+        <div class="about-photo relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]">
+          <img
+            src="/images/about/SM011.1-247.jpg"
+            alt="Chris, Gründer von SteinertMedia"
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
+          <div class="about-scrim pointer-events-none absolute inset-0 hidden sm:block"></div>
+        </div>
+        <div
+          class="bg-ink px-6 py-8 sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-10 sm:bg-transparent sm:px-10 sm:py-10"
+        >
           <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-paper sm:text-4xl">Über mich</h2>
           <p class="mt-4 max-w-xl leading-[1.7] text-paper/85">
             Ich bin Chris, Videoeditor mit Sitz in Wolfenbüttel. Seit mehreren Jahren arbeite ich
