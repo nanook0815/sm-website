@@ -340,12 +340,14 @@ onUnmounted(() => {
         ref="headingRef"
         class="pointer-events-none absolute left-0 top-0 z-10 max-w-[16rem] origin-top-left text-center sm:max-w-sm sm:text-right"
       >
-        <p class="font-mono text-sm font-medium uppercase tracking-widest text-bronze">
-          Ein Blick hinter die Kamera
-        </p>
-        <h2 class="mt-3 text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
-          Weiterscrollen, um näher ranzugehen.
-        </h2>
+        <div class="relative inline-block">
+          <p class="font-mono text-sm font-medium uppercase tracking-widest text-bronze">
+            Ein Blick hinter die Kamera
+          </p>
+          <h2 class="mt-3 text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
+            Weiterscrollen, um näher ranzugehen.
+          </h2>
+        </div>
       </div>
 
       <img
@@ -468,7 +470,7 @@ onUnmounted(() => {
 
         <div
           v-if="selectedTile"
-          class="absolute inset-0 flex flex-col items-start justify-center gap-3 bg-ink px-[10%] text-paper"
+          class="detail-tile absolute inset-0 flex flex-col items-start justify-center gap-2 bg-ink px-[10%] text-paper"
         >
           <button
             ref="backButtonRef"
@@ -483,11 +485,11 @@ onUnmounted(() => {
               class="h-[55%] w-[55%] [stroke-width:1.5] transition-transform duration-200 group-hover:-translate-x-0.5"
             />
           </button>
-          <span class="flex aspect-square h-[13%] items-center justify-center">
-            <Icon :name="selectedTile.icon" mode="svg" class="h-full w-full [stroke-width:1.5] text-bronze-light" />
+          <span class="flex aspect-square h-[22%] items-center justify-center">
+            <Icon :name="selectedTile.icon" mode="svg" class="h-full w-full [stroke-width:1.25] text-bronze-light" />
           </span>
-          <h3 class="font-mono text-[1.05em] font-medium uppercase tracking-widest">{{ selectedTile.title }}</h3>
-          <p class="max-w-[32ch] text-[0.85em] leading-relaxed text-paper/80">{{ selectedTile.description }}</p>
+          <h3 class="font-mono text-[1.7em] font-semibold uppercase tracking-widest">{{ selectedTile.title }}</h3>
+          <p class="max-w-[26ch] text-[0.75em] leading-relaxed text-paper/70">{{ selectedTile.description }}</p>
         </div>
       </div>
     </div>

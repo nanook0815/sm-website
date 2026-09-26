@@ -49,50 +49,58 @@ const filteredItems = computed(() => {
           class="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line"
           :style="{ transitionDelay: `${Math.min(index, 6) * 80}ms` }"
         >
-          <PhotoStrip
-            v-if="item.images"
-            :images="item.images"
-            :title="`${item.title} – ${item.client}`"
-          />
-          <a
-            v-else-if="item.link"
-            :href="item.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="relative block aspect-video overflow-hidden"
-          >
-            <img
-              v-if="item.thumbnail"
-              :src="item.thumbnail"
-              :alt="`${item.title} – ${item.client}`"
-              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div
-              v-else
-              class="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+          <div class="relative">
+            <span
+              class="absolute left-3 top-3 z-10 rounded-full bg-paper/95 px-3 py-1 font-mono text-xs font-medium uppercase tracking-widest text-ink shadow-sm"
             >
               {{ item.category }}
-            </div>
-            <div
-              class="absolute inset-0 flex items-center justify-center bg-ink/0 text-sm font-medium text-paper opacity-0 transition-all duration-300 group-hover:bg-ink/50 group-hover:opacity-100"
-            >
-              Projekt ansehen →
-            </div>
-          </a>
-          <template v-else>
-            <img
-              v-if="item.thumbnail"
-              :src="item.thumbnail"
-              :alt="`${item.title} – ${item.client}`"
-              class="aspect-video w-full object-cover"
+            </span>
+
+            <PhotoStrip
+              v-if="item.images"
+              :images="item.images"
+              :title="`${item.title} – ${item.client}`"
             />
-            <div
-              v-else
-              class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+            <a
+              v-else-if="item.link"
+              :href="item.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative block aspect-video overflow-hidden"
             >
-              {{ item.category }}
-            </div>
-          </template>
+              <img
+                v-if="item.thumbnail"
+                :src="item.thumbnail"
+                :alt="`${item.title} – ${item.client}`"
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                v-else
+                class="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+              >
+                {{ item.category }}
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center bg-ink/0 text-sm font-medium text-paper opacity-0 transition-all duration-300 group-hover:bg-ink/50 group-hover:opacity-100"
+              >
+                Projekt ansehen →
+              </div>
+            </a>
+            <template v-else>
+              <img
+                v-if="item.thumbnail"
+                :src="item.thumbnail"
+                :alt="`${item.title} – ${item.client}`"
+                class="aspect-video w-full object-cover"
+              />
+              <div
+                v-else
+                class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
+              >
+                {{ item.category }}
+              </div>
+            </template>
+          </div>
           <div class="p-5">
             <h3 class="font-semibold tracking-[-0.01em] text-ink">
               {{ item.title }}

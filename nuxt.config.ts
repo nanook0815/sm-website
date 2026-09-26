@@ -47,7 +47,14 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/svg+xml',
+          media: '(prefers-color-scheme: light)',
           href: '/images/brand/export/icon-fokusfeld-graphit.svg'
+        },
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          media: '(prefers-color-scheme: dark)',
+          href: '/images/brand/export/icon-fokusfeld-weiss.svg'
         },
         { rel: 'alternate icon', href: '/favicon.ico' }
       ]
