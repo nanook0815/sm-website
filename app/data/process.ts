@@ -11,32 +11,33 @@ export const processSteps: ProcessStep[] = [
     index: '01',
     title: 'Erstkontakt',
     description:
-      'Du schreibst oder rufst kurz an – wir sprechen über Anlass, Ziel und den groben Rahmen des Projekts.'
+      'Du musst noch nicht alles durchgeplant haben. Eine kurze Nachricht reicht – wir klären, worum es geht, was du erreichen möchtest und welcher Rahmen dafür sinnvoll ist.'
   },
   {
     id: 'konzept',
     index: '02',
     title: 'Konzept & Planung',
-    description: 'Gemeinsam legen wir Ablauf, Location und Bildidee fest, bevor es losgeht.'
+    description:
+      'Bevor es losgeht, schaffen wir Klarheit. Ziel, Ablauf und die wichtigsten kreativen Entscheidungen werden gemeinsam festgelegt, damit von Anfang an klar ist, wohin das Projekt soll.'
   },
   {
     id: 'dreh',
     index: '03',
     title: 'Dreh & Shooting',
-    description: 'Vor Ort übernehme ich Technik, Perspektive und Timing persönlich – alles aus einer Hand.'
+    description: 'Vor Ort übernehme ich Technik, Perspektive und Timing, damit du dich auf das Wesentliche konzentrieren kannst.'
   },
   {
     id: 'feedback',
     index: '04',
-    title: 'Feedback',
+    title: 'Abstimmung',
     description:
-      'Dein Konzept und deine Wünsche treffen auf meine Erfahrung – in Absprache entsteht gemeinsam das beste Ergebnis.'
+      'Deine Perspektive ist ein wichtiger Teil des Prozesses. Meine Aufgabe ist es, sie mit dem Ziel des Projekts und der Wirkung auf die Zielgruppe zusammenzubringen.'
   },
   {
     id: 'ergebnis',
     index: '05',
     title: 'Fertiges Ergebnis',
     description:
-      'Nach der Bearbeitung stimmen wir das Ergebnis gemeinsam ab, dann folgt die finale Lieferung.'
+      'Am Ende steht nicht einfach nur ein fertiges Projekt, sondern etwas, das zu dir passt, bei den richtigen Menschen ankommt und im Kopf bleibt.'
   }
 ]

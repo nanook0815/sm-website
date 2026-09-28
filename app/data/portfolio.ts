@@ -5,6 +5,10 @@ export interface PortfolioItem {
   title: string
   client: string
   category: PortfolioCategory
+  // Individuelles Kürzel pro Projekt, das oben auf der Karte angezeigt wird
+  // (z. B. "Kampagnenfilm") – getrennt von `category`, das weiterhin die
+  // Filter-Buttons (Video/Foto/Editing) steuert.
+  label: string
   description: string
   link?: string
   thumbnail?: string
@@ -39,40 +43,44 @@ function fotoSerie(ordner: string, formate: Array<'hoch' | 'quer' | 'schmal'>): 
 export const portfolioItems: PortfolioItem[] = [
   {
     id: 'erklaervideo-weca',
-    title: 'Erklärvideo',
-    client: 'weca',
+    title: 'WECA',
+    client: 'Erklärvideo',
     category: 'Video',
+    label: 'Kampagnenfilm',
     description:
-      'Kurzes, humorvolles Erklärvideo für die Anbieter-Kampagne von weca – Konzept, Dreh und Schnitt aus einer Hand.',
+      'Überforderung sichtbar gemacht: Ein humorvoller Sketch, der alltägliche Probleme zuspitzt und WECA als Partner für konkrete Lösungen ins Spiel bringt.',
     link: 'https://www.weca.care/anbieter/',
     thumbnail: '/images/portfolio/video/WECA_erklärvideo_Thumbnail.png'
   },
   {
     id: 'imagefilm-relax4me',
-    title: 'Imagefilm',
-    client: 'relax4me – Maderotherapie',
+    title: 'relax4me – Maderotherapie',
+    client: 'Imagefilm',
     category: 'Video',
+    label: 'Websitefilm',
     description:
-      'Video-Produktion für die Landingpage einer Wellness-Praxis, zu sehen direkt auf der Website.',
+      'Weniger erklären, mehr fühlen: Ein atmosphärischer Film, der die Maderotherapie über Nähe, Ruhe und echte Behandlungsmomente erlebbar macht.',
     link: 'https://relax4me.info/maderotherapie/',
     thumbnail: '/images/portfolio/video/AH001_Maderotherapie.00_01_57_11.jpg'
   },
   {
     id: 'spielerportraits-sv-kralenriede',
-    title: 'Spielerporträts & Mannschaftsfoto',
-    client: 'SV Kralenriede 1922 e.V.',
+    title: 'SV Kralenriede 1922 e.V.',
+    client: 'Spielerporträts & Mannschaftsfoto',
     category: 'Foto',
+    label: 'Portraitserie',
     description:
-      'Porträts der Spieler mit Studiolicht in Vereinsfarben, dazu das offizielle Mannschaftsfoto für die neue Saison.',
+      'Vereinsidentität sichtbar gemacht: Eine Portraitserie, die jedem Spieler seinen eigenen Auftritt gibt und gleichzeitig eine gemeinsame visuelle Sprache für das Team schafft.',
     images: fotoSerie('sv-kralenriede', ['hoch', 'hoch', 'hoch', 'hoch', 'quer', 'quer'])
   },
   {
     id: 'hochzeitsfotografie',
-    title: 'Hochzeitsfotografie',
-    client: 'Standesamt & freie Trauungen',
+    title: 'Standesamt & freie Trauung',
+    client: 'Hochzeitsfotografie',
     category: 'Foto',
+    label: 'Hochzeitsreportage',
     description:
-      'Natürliche Paar- und Gästeporträts, Details und Momente vom Standesamt bis zur Feier.',
+      'Ein Tag, der nicht inszeniert werden muss: Eine Hochzeitsreportage, die Nähe, Stimmung und die kleinen Momente festhält, aus denen später Erinnerungen werden.',
     images: fotoSerie('hochzeiten', [
       'schmal',
       'hoch',
@@ -88,13 +96,14 @@ export const portfolioItems: PortfolioItem[] = [
     ])
   },
   {
-    id: 'wardogs-review-2twistedtv',
-    title: 'Gaming-Content-Schnitt',
-    client: '2TwistedTV',
+    id: 'holegal',
+    title: 'HOLEGAL',
+    client: 'YouTube-Video',
     category: 'Editing',
+    label: 'YouTube Editing',
     description:
-      'Schnitt eines Gaming-Testvideos für den Twitch-Streamer 2TwistedTV, von Rohmaterial bis fertigem YouTube-Upload.',
-    link: 'https://youtu.be/Rgu0QAc1BXI',
-    thumbnail: '/images/portfolio/editing/TT019_Wardogs_review.jpg'
+      'Komplexe Rechtsthemen so aufbereitet, dass man gerne dranbleibt. Mit einem klaren Schnitt und passenden Visuals werden auch trockene Inhalte verständlich und kurzweilig.',
+    link: 'https://www.youtube.com/watch?v=nxPGt4eBNZU',
+    thumbnail: '/images/portfolio/editing/holegal-thumbnail.jpg'
   }
 ]

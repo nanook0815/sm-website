@@ -24,15 +24,13 @@ const timelineTicks = Array.from({ length: 24 })
 
     <div class="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-28 sm:px-6 sm:py-36">
       <p class="font-mono text-sm font-medium uppercase tracking-widest text-bronze-light">
-        Video · Foto · Editing
+        Foto · Video · Editing
       </p>
       <h1 class="max-w-3xl text-5xl font-medium leading-[1.04] tracking-[-0.03em] sm:text-7xl">
-        Bilder und Geschichten, die hängen bleiben.
+        Du brauchst nicht mehr Content. Du brauchst etwas, das hängen bleibt.
       </h1>
       <p class="max-w-[34rem] text-lg leading-[1.7] text-paper/75">
-        Ich bin Chris – Videoeditor, Videograf und Fotograf aus Wolfenbüttel. Ich unterstütze
-        Unternehmen, Künstler:innen und Privatpersonen dabei, ihre Momente in starke visuelle
-        Inhalte zu verwandeln.
+        Ideen, Menschen und Geschichten werden zu Konzepten, Bildern und Videos.
       </p>
       <div class="flex flex-wrap gap-4 pt-2">
         <a

@@ -17,20 +17,21 @@
         >
           <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-paper sm:text-4xl">Über mich</h2>
           <p class="mt-4 max-w-xl leading-[1.7] text-paper/85">
-            Ich bin Chris, Videoeditor mit Sitz in Wolfenbüttel. Seit mehreren Jahren arbeite ich
-            mit Unternehmen, Künstler:innen und Privatpersonen zusammen und begleite Projekte von
-            der ersten Idee über den Dreh bis zum fertigen Schnitt. Mein Fokus liegt auf sauberem,
-            emotionalem Storytelling – egal ob Imagefilm oder Social-Media-Content.
+            Gute Arbeit entsteht für mich nicht nur durch Technik, sondern durch ein Gefühl für
+            Menschen, Situationen und den richtigen Moment. Seit mehreren Jahren arbeite ich an
+            unterschiedlichsten Projekten vor und hinter der Kamera. Dabei ist mir wichtig, dass
+            die Zusammenarbeit entspannt, persönlich und auf Augenhöhe stattfindet – und am Ende
+            etwas entsteht, das zum jeweiligen Projekt passt und nicht nach einer Vorlage aussieht.
           </p>
           <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-paper/90">
             <li class="flex items-center gap-2">
-              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Video-Editing & Sounddesign
+              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Persönlich & unkompliziert
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Videoproduktion vor Ort
+              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Klar in der Kommunikation
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Foto- und Hochzeitsfotografie
+              <Icon name="lucide:check" class="h-4 w-4 shrink-0 text-bronze-light" /> Mit Blick fürs Ganze
             </li>
           </ul>
         </div>
