@@ -193,7 +193,7 @@ onUnmounted(() => mobileObserver?.disconnect())
                   class="overflow-hidden text-sm leading-relaxed text-paper/80 transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
                   :class="
                     hoveredIndex === index
-                      ? 'mt-1.5 max-h-36 opacity-100'
+                      ? 'mt-1.5 max-h-60 opacity-100'
                       : 'mt-0 max-h-0 opacity-0'
                   "
                 >
@@ -218,7 +218,7 @@ onUnmounted(() => mobileObserver?.disconnect())
                   class="overflow-hidden text-sm leading-relaxed text-paper transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
                   :class="
                     hoveredIndex === index
-                      ? 'mt-1.5 max-h-36 opacity-100'
+                      ? 'mt-1.5 max-h-60 opacity-100'
                       : 'mt-0 max-h-0 opacity-0'
                   "
                 >
