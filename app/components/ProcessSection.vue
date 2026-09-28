@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { processSteps } from '~/data/process'
 
-const resultStep = processSteps.find((step) => step.id === 'ergebnis')!
-
 const stepPhotos: Partial<Record<string, { src: string; alt: string }>> = {
   konzept: {
     src: '/images/process/konzept-planung.svg',
@@ -75,18 +73,20 @@ onUnmounted(() => mobileObserver?.disconnect())
         Von der ersten Nachricht bis zur fertigen Lieferung – fünf Schritte, ein Ansprechpartner.
       </p>
 
-      <!-- Mobile: Karussell mit Scroll-Snap, abwechselnd solide/Foto wie am
-           Desktop, plus Punkt-Indikator darunter, damit die horizontale
-           Scrollbarkeit erkennbar ist. -->
+      <!-- Mobile & Tablet: Karussell mit Scroll-Snap, abwechselnd solide/Foto
+           wie am Desktop, plus Punkt-Indikator darunter. Gilt bis zur
+           Desktop-Breakpoint (lg), weil ohne Maus kein Hover funktioniert –
+           die Kacheln wachsen breakpoint-abhängig mit, damit auf Tablet
+           nicht eine einzelne überdimensionierte Handy-Karte zu sehen ist. -->
       <div
         ref="mobileScrollRef"
-        class="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] sm:hidden [&::-webkit-scrollbar]:hidden"
+        class="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden"
       >
         <div
           v-for="(step, index) in processSteps"
           :key="step.id"
           :ref="(el) => setMobileCardRef(el as Element | null, index)"
-          class="w-[78%] shrink-0 snap-start overflow-hidden rounded-xl shadow-sm ring-1 ring-line"
+          class="w-[78%] shrink-0 snap-start overflow-hidden rounded-xl shadow-sm ring-1 ring-line sm:w-[45%]"
           :class="stepPhotos[step.id] ? 'relative' : 'bg-ink'"
         >
           <template v-if="stepPhotos[step.id]">
@@ -109,23 +109,25 @@ onUnmounted(() => mobileObserver?.disconnect())
               <h3 class="text-base font-semibold tracking-[-0.01em] text-paper">
                 {{ step.title }}
               </h3>
-              <p class="mt-1.5 text-sm leading-relaxed text-paper/80">{{ step.description }}</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-paper">{{ step.description }}</p>
             </div>
           </template>
           <div v-else class="p-6">
-            <p class="font-mono text-sm font-medium tracking-widest text-bronze-light">
+            <span
+              class="inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+            >
               {{ step.index }}
-            </p>
+            </span>
             <h3 class="mt-3 text-base font-semibold tracking-[-0.01em] text-paper">
               {{ step.title }}
             </h3>
-            <p class="mt-2 text-sm leading-relaxed text-paper/75">{{ step.description }}</p>
+            <p class="mt-2 text-sm leading-relaxed text-paper">{{ step.description }}</p>
           </div>
         </div>
       </div>
 
       <div
-        class="mt-4 flex justify-center gap-2 sm:hidden"
+        class="mt-4 flex justify-center gap-2 lg:hidden"
         role="tablist"
         aria-label="Ablauf-Schritte"
       >
@@ -141,34 +143,13 @@ onUnmounted(() => mobileObserver?.disconnect())
         ></button>
       </div>
 
-      <!-- Tablet: 2er-Grid -->
-      <div class="mt-10 hidden gap-6 sm:grid sm:grid-cols-2 lg:hidden">
-        <div
-          v-for="step in processSteps"
-          :key="step.id"
-          class="rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line"
-        >
-          <p class="font-mono text-sm font-medium tracking-widest text-bronze">{{ step.index }}</p>
-          <h3 class="mt-3 text-base font-semibold tracking-[-0.01em] text-ink">{{ step.title }}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-body">{{ step.description }}</p>
-          <div v-if="step.id === resultStep.id" class="mt-4 overflow-hidden rounded-xl">
-            <img
-              src="/images/portfolio/video/AH001_Maderotherapie.00_01_57_11.jpg"
-              alt="Standbild aus einem fertig geschnittenen Video"
-              loading="lazy"
-              class="aspect-[4/3] w-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
       <!-- Desktop: "Konturbogen" – fünf gleich hohe Kacheln in Ruhe; beim
            Hovern wächst nur die Kachel unter der Maus, alle anderen bleiben
            auf Ruhehöhe stehen. Unterhalb der Reihe hellt sich eine Linie auf
            und ein einzelner Punkt wandert unter die gehoverte Kachel. Die
            Kachelreihe hat eine feste Höhe (Scheitelpunkt-Maß), damit kein
            Nachbarinhalt der Seite beim Hovern mitspringt. Ungerade Schritte
-           (01/03/05) bleiben solide Ink-Kacheln, gerade Schritte (02/04)
+           (01/03/05) bleiben solide Bronze-Kacheln, gerade Schritte (02/04)
            sind Foto-Kacheln. Direction contract:
            .impeccable/surfaces/app-components-processsection-vue.md -->
       <div class="hidden lg:mt-14 lg:block">
@@ -221,9 +202,11 @@ onUnmounted(() => mobileObserver?.disconnect())
               </div>
             </template>
             <div v-else class="flex h-full flex-col justify-between p-6">
-              <p class="font-mono text-sm font-medium tracking-widest text-bronze-light">
+              <span
+                class="inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+              >
                 {{ step.index }}
-              </p>
+              </span>
               <div>
                 <h3
                   class="font-medium tracking-[-0.01em] text-paper transition-[font-size,line-height] duration-300"
@@ -232,7 +215,7 @@ onUnmounted(() => mobileObserver?.disconnect())
                   {{ step.title }}
                 </h3>
                 <p
-                  class="overflow-hidden text-sm leading-relaxed text-paper/75 transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
+                  class="overflow-hidden text-sm leading-relaxed text-paper transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
                   :class="
                     hoveredIndex === index
                       ? 'mt-1.5 max-h-36 opacity-100'
