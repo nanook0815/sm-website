@@ -12,17 +12,9 @@ const stepPhotos: Partial<Record<string, { src: string; alt: string }>> = {
   }
 }
 
-// Desktop-Kontur: im Ruhezustand liegen alle Kacheln auf derselben Höhe.
-// Beim Hovern wächst ausschließlich die Kachel unter der Maus – Nachbarn
-// bleiben unverändert auf Ruhehöhe stehen, nichts wird kleiner als in Ruhe.
-const REST_HEIGHT = 410
-const PEAK_HEIGHT = 460
-
+// Desktop: Index der Kachel unter Maus bzw. Tastaturfokus – nur diese
+// Kachel öffnet sich (siehe <style> unten).
 const hoveredIndex = ref<number | null>(null)
-
-function tileHeight(index: number) {
-  return hoveredIndex.value === index ? PEAK_HEIGHT : REST_HEIGHT
-}
 
 // Mobile-Karussell: zeigt per Punkt-Indikator an, welche Karte gerade im
 // Scroll-Snap-Streifen sichtbar ist, und macht die horizontale Scrollbarkeit
@@ -143,86 +135,46 @@ onUnmounted(() => mobileObserver?.disconnect())
         ></button>
       </div>
 
-      <!-- Desktop: "Konturbogen" – fünf gleich hohe Kacheln in Ruhe; beim
-           Hovern wächst nur die Kachel unter der Maus, alle anderen bleiben
-           auf Ruhehöhe stehen. Unterhalb der Reihe hellt sich eine Linie auf
-           und ein einzelner Punkt wandert unter die gehoverte Kachel. Die
-           Kachelreihe hat eine feste Höhe (Scheitelpunkt-Maß), damit kein
-           Nachbarinhalt der Seite beim Hovern mitspringt. Ungerade Schritte
-           (01/03/05) bleiben solide Bronze-Kacheln, gerade Schritte (02/04)
-           sind Foto-Kacheln. Direction contract:
-           .impeccable/surfaces/app-components-processsection-vue.md -->
+      <!-- Desktop: "Blende öffnen" – die Kachel öffnet sich per Clip-Maske nach
+           oben (keine Höhen-Animation), das Foto setzt sich, der Text wird wie
+           beim Schärfeziehen von unscharf zu scharf. -->
       <div class="hidden lg:mt-14 lg:block" @mouseleave="hoveredIndex = null">
-        <div
-          class="flex items-end gap-4"
-          :style="{ height: `${PEAK_HEIGHT}px` }"
-        >
+        <div class="flex h-[460px] gap-4">
           <div
             v-for="(step, index) in processSteps"
             :key="step.id"
-            class="relative z-10 flex-1 overflow-hidden rounded-xl shadow-sm ring-1 ring-line transition-[height] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-[1ms]"
-            :class="stepPhotos[step.id] ? '' : 'bg-ink'"
-            :style="{ height: `${tileHeight(index)}px` }"
+            tabindex="0"
+            class="process-tile group relative overflow-hidden rounded-xl bg-ink outline-none h-full flex-1"
+            :class="{ 'is-active': hoveredIndex === index }"
             @mouseenter="hoveredIndex = index"
+            @focus="hoveredIndex = index"
           >
             <template v-if="stepPhotos[step.id]">
               <img
                 :src="stepPhotos[step.id]!.src"
                 :alt="stepPhotos[step.id]!.alt"
                 loading="lazy"
-                class="absolute inset-0 h-full w-full object-cover"
+                class="process-img absolute inset-0 h-full w-full object-cover"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"
                 aria-hidden="true"
               ></div>
-              <span
-                class="absolute left-4 top-4 rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
-              >
-                {{ step.index }}
-              </span>
-              <div class="absolute inset-x-0 bottom-0 p-5">
-                <h3
-                  class="font-medium tracking-[-0.01em] text-paper transition-[font-size,line-height] duration-300"
-                  :class="hoveredIndex === index ? 'text-lg' : 'text-xl'"
-                >
-                  {{ step.title }}
-                </h3>
-                <p
-                  class="overflow-hidden text-sm leading-relaxed text-paper/80 transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
-                  :class="
-                    hoveredIndex === index
-                      ? 'mt-1.5 max-h-60 opacity-100'
-                      : 'mt-0 max-h-0 opacity-0'
-                  "
-                >
-                  {{ step.description }}
-                </p>
-              </div>
             </template>
-            <div v-else class="flex h-full flex-col justify-between p-6">
+            <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-line/40 group-focus-visible:ring-2 group-focus-visible:ring-bronze-light" aria-hidden="true"></div>
+            <div class="relative flex h-full flex-col justify-between p-6">
               <span
-                class="inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+                class="process-badge inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
               >
                 {{ step.index }}
               </span>
               <div>
-                <h3
-                  class="font-medium tracking-[-0.01em] text-paper transition-[font-size,line-height] duration-300"
-                  :class="hoveredIndex === index ? 'text-lg' : 'text-xl'"
-                >
+                <h3 class="text-xl font-medium leading-snug tracking-[-0.01em] text-paper">
                   {{ step.title }}
                 </h3>
-                <p
-                  class="overflow-hidden text-sm leading-relaxed text-paper transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
-                  :class="
-                    hoveredIndex === index
-                      ? 'mt-1.5 max-h-60 opacity-100'
-                      : 'mt-0 max-h-0 opacity-0'
-                  "
-                >
-                  {{ step.description }}
-                </p>
+                <div class="process-desc">
+                  <p class="text-sm leading-relaxed text-paper/85">{{ step.description }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -249,3 +201,67 @@ onUnmounted(() => mobileObserver?.disconnect())
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Desktop-Kacheln "Blende öffnen": Die Kachel öffnet sich per Clip-Maske
+   nach oben statt ihre Höhe zu animieren; der Text wird wie beim
+   Schärfeziehen von unscharf zu scharf. Mit Tailwind-Klassen allein nicht
+   sauber lösbar (verzögerte, gestaffelte Übergänge). */
+.process-tile {
+  clip-path: inset(56px 0 0 0 round 12px);
+  transition: clip-path 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.process-tile.is-active {
+  clip-path: inset(0 0 0 0 round 12px);
+}
+.process-badge {
+  transform: translateY(56px);
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.process-tile.is-active .process-badge {
+  transform: none;
+}
+.process-img {
+  transform: scale(1.06);
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.process-tile.is-active .process-img {
+  transform: scale(1);
+}
+.process-desc {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.process-desc > p {
+  min-height: 0;
+  padding-top: 0.5rem;
+  overflow: hidden;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity 200ms ease-out,
+    filter 200ms ease-out;
+}
+.process-tile.is-active .process-desc {
+  grid-template-rows: 1fr;
+}
+.process-tile.is-active .process-desc > p {
+  opacity: 1;
+  filter: blur(0);
+  transition:
+    opacity 360ms ease-out 140ms,
+    filter 520ms cubic-bezier(0.16, 1, 0.3, 1) 140ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .process-tile,
+  .process-badge,
+  .process-img,
+  .process-desc {
+    transition-duration: 1ms;
+  }
+  .process-desc > p {
+    filter: none;
+  }
+}
+</style>
