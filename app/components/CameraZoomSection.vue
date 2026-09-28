@@ -4,6 +4,7 @@ interface Tile {
   title: string
   description: string
   icon: string
+  image: string
 }
 
 const tiles: Tile[] = [
@@ -11,25 +12,29 @@ const tiles: Tile[] = [
     id: 'video',
     title: 'Videografie',
     description: 'Kamerabegleitung und Dreh vor Ort – von der Idee bis zum fertigen Film.',
-    icon: 'lucide:video'
+    icon: 'lucide:video',
+    image: '/images/leistungen/video.svg'
   },
   {
     id: 'foto',
     title: 'Fotografie',
     description: 'Portrait-, Team- und Eventfotografie mit Blick fürs Echte statt gestellter Posen.',
-    icon: 'lucide:camera'
+    icon: 'lucide:camera',
+    image: '/images/leistungen/foto.svg'
   },
   {
     id: 'editing',
     title: 'Editing',
     description: 'Schnitt, Farbe und Sounddesign aus deinem Rohmaterial.',
-    icon: 'lucide:clapperboard'
+    icon: 'lucide:clapperboard',
+    image: '/images/leistungen/editing.svg'
   },
   {
     id: 'konzeption',
     title: 'Konzeption',
     description: 'Von der ersten Idee zum stimmigen visuellen Konzept.',
-    icon: 'lucide:lightbulb'
+    icon: 'lucide:lightbulb',
+    image: '/images/leistungen/konzeption.svg'
   }
 ]
 
@@ -87,6 +92,10 @@ const MOBILE_BREAKPOINT_PX = 640
 // Zoom bewusst schwächer als technisch möglich: unten soll noch ein Stück vom
 // Rig sichtbar bleiben statt hart an den Monitorrand zu schneiden.
 const ZOOM_STRENGTH = 0.65
+// Auf schmalen Screens ist der Monitor sonst zu klein: hier wird deutlich
+// stärker gezoomt, sodass links/rechts nur noch ein schmaler weißer Rand
+// bleibt statt viel Weißraum neben einem kleinen Monitor.
+const ZOOM_STRENGTH_MOBILE = 0.92
 // Nah an 1, damit das Bild randlos (full-bleed) startet statt mit Rand.
 const START_SCALE = 0.97
 const ZOOM_START = 0
@@ -165,7 +174,8 @@ function measure() {
   // Kein Breiten-Puffer mehr (früher 0.9 * vw) – der Zielzustand ist
   // randloses (full-bleed) Bild, kein zentriertes Bild mit Seitenrand.
   s0 = Math.min(vw / CONTENT.w, Math.max(heightTerm, wideFloor)) * START_SCALE
-  s1 = Math.min(vw / MONITOR.w, availableH / MONITOR.h) * ZOOM_STRENGTH
+  const zoomStrength = vw < MOBILE_BREAKPOINT_PX ? ZOOM_STRENGTH_MOBILE : ZOOM_STRENGTH
+  s1 = Math.min(vw / MONITOR.w, availableH / MONITOR.h) * zoomStrength
   focusStart = { x: CONTENT.x + CONTENT.w / 2, y: CONTENT.y + CONTENT.h / 2 }
   focusEnd = { x: MONITOR.x + MONITOR.w / 2, y: MONITOR.y + MONITOR.h / 2 }
   // Layout-Breite = finale Bildschirmbreite, gedeckelt auf die native Auflösung,
@@ -468,15 +478,17 @@ onUnmounted(() => {
           </button>
         </div>
 
-        <div
-          v-if="selectedTile"
-          class="detail-tile absolute inset-0 flex flex-col items-start justify-center gap-2 bg-ink px-[10%] text-paper"
-        >
+        <div v-if="selectedTile" class="detail-tile absolute inset-0 flex bg-ink text-paper">
+          <div class="absolute inset-0 overflow-hidden">
+            <img :src="selectedTile.image" alt="" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-ink/80 to-ink" />
+          </div>
+
           <button
             ref="backButtonRef"
             type="button"
             aria-label="Zurück zur Übersicht"
-            class="group absolute left-[6%] top-[6%] flex aspect-square h-[13%] items-center justify-center rounded-full bg-paper/10 text-paper transition-colors hover:bg-bronze focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
+            class="group absolute left-[6%] top-[6%] z-10 flex aspect-square h-[13%] items-center justify-center rounded-full bg-paper/10 text-paper backdrop-blur-sm transition-colors hover:bg-bronze focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
             @click="closeTile"
           >
             <Icon
@@ -485,11 +497,14 @@ onUnmounted(() => {
               class="h-[55%] w-[55%] [stroke-width:1.5] transition-transform duration-200 group-hover:-translate-x-0.5"
             />
           </button>
-          <span class="flex aspect-square h-[22%] items-center justify-center">
-            <Icon :name="selectedTile.icon" mode="svg" class="h-full w-full [stroke-width:1.25] text-bronze-light" />
-          </span>
-          <h3 class="font-mono text-[1.7em] font-semibold uppercase tracking-widest">{{ selectedTile.title }}</h3>
-          <p class="max-w-[26ch] text-[0.75em] leading-relaxed text-paper/70">{{ selectedTile.description }}</p>
+
+          <div class="relative flex h-full w-full flex-col items-start justify-center gap-2 py-[8%] pl-[42%] pr-[8%]">
+            <span class="flex aspect-square h-[18%] items-center justify-center">
+              <Icon :name="selectedTile.icon" mode="svg" class="h-full w-full [stroke-width:1.25] text-bronze-light" />
+            </span>
+            <h3 class="font-mono text-[1.5em] font-semibold uppercase tracking-widest">{{ selectedTile.title }}</h3>
+            <p class="max-w-[26ch] text-[0.7em] leading-relaxed text-paper/70">{{ selectedTile.description }}</p>
+          </div>
         </div>
       </div>
     </div>

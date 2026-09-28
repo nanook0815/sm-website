@@ -1,0 +1,14 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A2420" />
+      <stop offset="100%" stop-color="#1B1D1C" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)" />
+  <g transform="translate(400,225)" fill="none" stroke="#C08E52" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.4">
+    <rect x="-140" y="-70" width="200" height="140" rx="16" />
+    <path d="M60 -30 L150 -75 L150 75 L60 30 Z" />
+  </g>
+  <text x="48" y="402" font-family="ui-monospace, monospace" font-size="20" letter-spacing="4" fill="#FDFBF7" fill-opacity="0.35" text-transform="uppercase">FOTO FOLGT</text>
+</svg>
