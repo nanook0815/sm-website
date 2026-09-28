@@ -152,11 +152,10 @@ onUnmounted(() => mobileObserver?.disconnect())
            (01/03/05) bleiben solide Bronze-Kacheln, gerade Schritte (02/04)
            sind Foto-Kacheln. Direction contract:
            .impeccable/surfaces/app-components-processsection-vue.md -->
-      <div class="hidden lg:mt-14 lg:block">
+      <div class="hidden lg:mt-14 lg:block" @mouseleave="hoveredIndex = null">
         <div
           class="flex items-end gap-4"
           :style="{ height: `${PEAK_HEIGHT}px` }"
-          @mouseleave="hoveredIndex = null"
         >
           <div
             v-for="(step, index) in processSteps"
@@ -193,7 +192,7 @@ onUnmounted(() => mobileObserver?.disconnect())
                   class="overflow-hidden text-sm leading-relaxed text-paper/80 transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
                   :class="
                     hoveredIndex === index
-                      ? 'mt-1.5 max-h-36 opacity-100'
+                      ? 'mt-1.5 max-h-60 opacity-100'
                       : 'mt-0 max-h-0 opacity-0'
                   "
                 >
@@ -218,7 +217,7 @@ onUnmounted(() => mobileObserver?.disconnect())
                   class="overflow-hidden text-sm leading-relaxed text-paper transition-[max-height,opacity,margin-top] duration-300 motion-reduce:transition-none"
                   :class="
                     hoveredIndex === index
-                      ? 'mt-1.5 max-h-36 opacity-100'
+                      ? 'mt-1.5 max-h-60 opacity-100'
                       : 'mt-0 max-h-0 opacity-0'
                   "
                 >
@@ -229,18 +228,22 @@ onUnmounted(() => mobileObserver?.disconnect())
           </div>
         </div>
 
-        <div class="relative mt-3 h-[7px]">
+        <div class="relative mt-8 h-9">
           <div
-            class="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 transition-colors duration-[380ms] ease-out motion-reduce:duration-[1ms]"
+            class="pointer-events-none absolute inset-x-0 top-[3px] h-px transition-colors duration-[380ms] ease-out motion-reduce:duration-[1ms]"
             :class="hoveredIndex !== null ? 'bg-bronze-light' : 'bg-line'"
             aria-hidden="true"
           ></div>
-          <span
-            class="pointer-events-none absolute top-1/2 h-[7px] w-[7px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bronze-light opacity-0 transition-[left,opacity] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-[1ms]"
-            :class="{ 'opacity-100': hoveredIndex !== null }"
+          <a
+            href="mailto:info@steinertmedia.de?subject=Projektanfrage"
+            aria-label="Kontakt aufnehmen"
+            title="Kontakt aufnehmen"
+            class="absolute top-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bronze-light p-2.5 text-ink shadow-sm transition-[left,opacity,transform] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-110 motion-reduce:duration-[1ms]"
+            :class="hoveredIndex !== null ? 'opacity-100 scale-100' : 'pointer-events-none scale-[0.08] opacity-0 focus-visible:pointer-events-auto focus-visible:scale-100 focus-visible:opacity-100'"
             :style="{ left: `${((hoveredIndex ?? 0) + 0.5) * (100 / processSteps.length)}%` }"
-            aria-hidden="true"
-          ></span>
+          >
+            <Icon name="lucide:send" mode="svg" class="h-4 w-4" />
+          </a>
         </div>
       </div>
     </div>
