@@ -10,6 +10,7 @@ useHead({
     <CameraZoomSection />
     <PortfolioSection />
     <AboutSection />
+    <ProcessSection />
     <TestimonialsSection />
     <ContactSection />
   </div>
