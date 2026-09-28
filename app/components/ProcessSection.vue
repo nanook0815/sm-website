@@ -70,7 +70,7 @@ onUnmounted(() => mobileObserver?.disconnect())
         So läuft die Zusammenarbeit ab
       </h2>
       <p class="mt-4 max-w-2xl leading-[1.7] text-body">
-        Von der ersten Nachricht bis zur fertigen Lieferung – fünf Schritte, ein Ansprechpartner.
+        Ein klarer Ablauf, direkte Kommunikation und jederzeit wissen, wie es mit deinem Projekt weitergeht.
       </p>
 
       <!-- Mobile & Tablet: Karussell mit Scroll-Snap, abwechselnd solide/Foto

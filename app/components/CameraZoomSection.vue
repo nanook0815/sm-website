@@ -11,28 +11,32 @@ const tiles: Tile[] = [
   {
     id: 'video',
     title: 'Videografie',
-    description: 'Kamerabegleitung und Dreh vor Ort – von der Idee bis zum fertigen Film.',
+    description:
+      'Vor der Kamera natürlich zu sein, ist für viele ungewohnt. Eine entspannte Zusammenarbeit schafft Sicherheit und Raum für echte Momente, klare Bildsprache und Videos mit Persönlichkeit.',
     icon: 'lucide:video',
     image: '/images/leistungen/video.svg'
   },
   {
     id: 'foto',
     title: 'Fotografie',
-    description: 'Portrait-, Team- und Eventfotografie mit Blick fürs Echte statt gestellter Posen.',
+    description:
+      'Fotografie bedeutet für mich, Momente so festzuhalten, dass man sich später nicht nur erinnert, wie sie aussahen, sondern wie sie sich angefühlt haben.',
     icon: 'lucide:camera',
     image: '/images/leistungen/foto.svg'
   },
   {
     id: 'editing',
     title: 'Editing',
-    description: 'Schnitt, Farbe und Sounddesign aus deinem Rohmaterial.',
+    description:
+      'Im Schnitt entscheidet sich, was hängen bleibt. Mit Rhythmus, Timing und Emotionen wird aus einzelnen Aufnahmen ein stimmiges Ganzes, das eine Geschichte erzählt.',
     icon: 'lucide:clapperboard',
     image: '/images/leistungen/editing.svg'
   },
   {
     id: 'konzeption',
     title: 'Konzeption',
-    description: 'Von der ersten Idee zum stimmigen visuellen Konzept.',
+    description:
+      'Eine starke Geschichte beginnt lange vor dem ersten Bild. In der Konzeption wird aus einem Gedanken eine klare Erzählung, die alles miteinander verbindet und den Betrachter nicht nur mitnimmt, sondern berührt.',
     icon: 'lucide:lightbulb',
     image: '/images/leistungen/konzeption.svg'
   }

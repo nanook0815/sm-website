@@ -18,10 +18,10 @@ const filteredItems = computed(() => {
   <section id="portfolio" class="py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <h2 class="text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl">
-        Portfolio
+        Ausgewählte Arbeiten
       </h2>
       <p class="mt-4 max-w-2xl leading-[1.7] text-body">
-        Eine Auswahl aktueller Projekte aus Video, Foto und Editing.
+        Weniger erzählen. Mehr zeigen.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-2">
@@ -53,7 +53,7 @@ const filteredItems = computed(() => {
             <span
               class="absolute left-3 top-3 z-10 rounded-full bg-paper/95 px-3 py-1 font-mono text-xs font-medium uppercase tracking-widest text-ink shadow-sm"
             >
-              {{ item.category }}
+              {{ item.label }}
             </span>
 
             <PhotoStrip
@@ -78,7 +78,7 @@ const filteredItems = computed(() => {
                 v-else
                 class="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
               >
-                {{ item.category }}
+                {{ item.label }}
               </div>
               <div
                 class="absolute inset-0 flex items-center justify-center bg-ink/0 text-sm font-medium text-paper opacity-0 transition-all duration-300 group-hover:bg-ink/50 group-hover:opacity-100"
@@ -97,7 +97,7 @@ const filteredItems = computed(() => {
                 v-else
                 class="flex aspect-video items-center justify-center bg-gradient-to-br from-ink to-body font-mono text-sm font-medium uppercase tracking-widest text-paper/60"
               >
-                {{ item.category }}
+                {{ item.label }}
               </div>
             </template>
           </div>
