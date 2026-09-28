@@ -229,18 +229,20 @@ onUnmounted(() => mobileObserver?.disconnect())
           </div>
         </div>
 
-        <div class="relative mt-3 h-[7px]">
+        <div class="relative mt-3 h-8">
           <div
-            class="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 transition-colors duration-[380ms] ease-out motion-reduce:duration-[1ms]"
+            class="pointer-events-none absolute inset-x-0 top-[3px] h-px transition-colors duration-[380ms] ease-out motion-reduce:duration-[1ms]"
             :class="hoveredIndex !== null ? 'bg-bronze-light' : 'bg-line'"
             aria-hidden="true"
           ></div>
-          <span
-            class="pointer-events-none absolute top-1/2 h-[7px] w-[7px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bronze-light opacity-0 transition-[left,opacity] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-[1ms]"
-            :class="{ 'opacity-100': hoveredIndex !== null }"
+          <a
+            href="mailto:info@steinertmedia.de?subject=Projektanfrage"
+            class="absolute top-[3px] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-bronze-light px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-widest text-ink shadow-sm transition-[left,opacity,transform] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-110 motion-reduce:duration-[1ms]"
+            :class="hoveredIndex !== null ? 'opacity-100 scale-100' : 'pointer-events-none scale-[0.08] opacity-0 focus-visible:pointer-events-auto focus-visible:scale-100 focus-visible:opacity-100'"
             :style="{ left: `${((hoveredIndex ?? 0) + 0.5) * (100 / processSteps.length)}%` }"
-            aria-hidden="true"
-          ></span>
+          >
+            Kontakt aufnehmen
+          </a>
         </div>
       </div>
     </div>
