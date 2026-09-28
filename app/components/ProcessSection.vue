@@ -152,11 +152,10 @@ onUnmounted(() => mobileObserver?.disconnect())
            (01/03/05) bleiben solide Bronze-Kacheln, gerade Schritte (02/04)
            sind Foto-Kacheln. Direction contract:
            .impeccable/surfaces/app-components-processsection-vue.md -->
-      <div class="hidden lg:mt-14 lg:block">
+      <div class="hidden lg:mt-14 lg:block" @mouseleave="hoveredIndex = null">
         <div
           class="flex items-end gap-4"
           :style="{ height: `${PEAK_HEIGHT}px` }"
-          @mouseleave="hoveredIndex = null"
         >
           <div
             v-for="(step, index) in processSteps"
