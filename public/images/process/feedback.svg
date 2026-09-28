@@ -1,0 +1,59 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: Bildschirm mit Feedback-Markierung im Schnitt-Review">
+  <defs>
+    <radialGradient id="glow2" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#C08E52" stop-opacity="0.16" />
+      <stop offset="55%" stop-color="#C08E52" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#C08E52" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="#1B1D1C" />
+  <rect width="800" height="600" fill="url(#glow2)" />
+
+  <g fill="#FDFBF7" opacity="0.05">
+    <circle cx="90" cy="500" r="2.5" />
+    <circle cx="150" cy="500" r="2.5" />
+    <circle cx="210" cy="500" r="2.5" />
+    <circle cx="90" cy="540" r="2.5" />
+    <circle cx="150" cy="540" r="2.5" />
+    <circle cx="210" cy="540" r="2.5" />
+    <circle cx="650" cy="100" r="2.5" />
+    <circle cx="700" cy="100" r="2.5" />
+    <circle cx="650" cy="140" r="2.5" />
+    <circle cx="700" cy="140" r="2.5" />
+  </g>
+
+  <!-- Sprechblase links: Rückmeldung -->
+  <g transform="translate(130 130)">
+    <path d="M 0 22 a 22 22 0 0 1 22 -22 h 118 a 22 22 0 0 1 22 22 v 56 a 22 22 0 0 1 -22 22 h -84 l -26 24 v -24 h -8 a 22 22 0 0 1 -22 -22 z"
+      fill="#242724" stroke="#DAD5CB" stroke-opacity="0.28" stroke-width="1.5" />
+    <circle cx="34" cy="60" r="6" fill="#FDFBF7" opacity="0.5" />
+    <circle cx="62" cy="60" r="6" fill="#FDFBF7" opacity="0.5" />
+    <circle cx="90" cy="60" r="6" fill="#FDFBF7" opacity="0.5" />
+  </g>
+
+  <!-- Sprechblase rechts: Freigabe -->
+  <g transform="translate(548 108)">
+    <path d="M 0 22 a 22 22 0 0 1 22 -22 h 100 a 22 22 0 0 1 22 22 v 52 a 22 22 0 0 1 -22 22 h -12 v 24 l -28 -24 h -60 a 22 22 0 0 1 -22 -22 z"
+      fill="#2A2D2A" stroke="#C08E52" stroke-opacity="0.55" stroke-width="1.75" />
+    <path d="M 30 55 l 16 16 l 34 -34" fill="none" stroke="#C08E52" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Monitor -->
+  <rect x="220" y="230" width="360" height="230" rx="14" fill="#242724" stroke="#DAD5CB" stroke-opacity="0.25" stroke-width="1.5" />
+  <rect x="240" y="250" width="320" height="150" rx="6" fill="#1B1D1C" />
+  <path d="M 380 290 l 44 35 l -44 35 z" fill="#FDFBF7" opacity="0.35" />
+
+  <!-- Standfuß -->
+  <rect x="378" y="460" width="44" height="26" rx="4" fill="#242724" stroke="#DAD5CB" stroke-opacity="0.25" stroke-width="1.5" />
+  <rect x="340" y="486" width="120" height="12" rx="6" fill="#242724" stroke="#DAD5CB" stroke-opacity="0.25" stroke-width="1.5" />
+
+  <!-- Scrubber / Timeline mit Feedback-Pin -->
+  <line x1="240" y1="418" x2="560" y2="418" stroke="#FDFBF7" stroke-opacity="0.3" stroke-width="4" stroke-linecap="round" />
+  <line x1="240" y1="418" x2="392" y2="418" stroke="#C08E52" stroke-width="4" stroke-linecap="round" />
+  <circle cx="392" cy="418" r="8" fill="#FDFBF7" />
+
+  <line x1="452" y1="400" x2="452" y2="418" stroke="#C08E52" stroke-width="2.5" stroke-dasharray="1 5" stroke-linecap="round" />
+  <circle cx="452" cy="392" r="9" fill="#C08E52" />
+  <circle cx="452" cy="392" r="9" fill="none" stroke="#1B1D1C" stroke-width="2" />
+</svg>
