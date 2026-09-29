@@ -5,6 +5,8 @@ import { testimonials } from '~/data/testimonials'
 const leadTestimonial = testimonials[0]
 const moreTestimonials = testimonials.slice(1)
 
+const leadOpen = ref(false)
+
 const stripRef = ref<HTMLElement | null>(null)
 
 function scrollStrip(direction: 1 | -1) {
@@ -31,15 +33,44 @@ function scrollStrip(direction: 1 | -1) {
           class="flex flex-col rounded-xl bg-ink px-6 py-10 text-paper shadow-sm sm:px-10 lg:col-span-7"
         >
           <Icon name="lucide:quote" class="h-10 w-10 text-bronze-light" aria-hidden="true" />
-          <blockquote class="mt-5 text-[clamp(1.25rem,3vw,1.5rem)] font-medium leading-[1.3] tracking-[-0.02em] [text-wrap:pretty]">
+          <!-- Mit Volltext: immer von oben lesbar, zugeklappt nur unten abgeschnitten -->
+          <div v-if="leadTestimonial.fullQuote" class="relative mt-5" :class="leadOpen ? '' : 'max-h-64 overflow-hidden'">
+            <blockquote class="space-y-4 text-lg leading-[1.6] [text-wrap:pretty]">
+              <p v-for="(paragraph, index) in leadTestimonial.fullQuote" :key="index">{{ paragraph }}</p>
+            </blockquote>
+            <div
+              v-if="!leadOpen"
+              class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent"
+              aria-hidden="true"
+            />
+          </div>
+          <blockquote
+            v-else
+            class="mt-5 text-[clamp(1.25rem,3vw,1.5rem)] font-medium leading-[1.3] tracking-[-0.02em] [text-wrap:pretty]"
+          >
             {{ leadTestimonial.quote }}
           </blockquote>
+          <button
+            v-if="leadTestimonial.fullQuote"
+            type="button"
+            :aria-expanded="leadOpen"
+            class="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-bronze-light transition-colors hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
+            @click="leadOpen = !leadOpen"
+          >
+            {{ leadOpen ? 'Weniger anzeigen' : 'Ganzes Feedback lesen' }}
+            <Icon
+              name="lucide:chevron-down"
+              class="h-4 w-4 transition-transform"
+              :class="leadOpen ? 'rotate-180' : ''"
+              aria-hidden="true"
+            />
+          </button>
           <figcaption class="mt-auto flex items-center gap-4 pt-8">
             <img
               v-if="leadTestimonial.avatar"
               :src="leadTestimonial.avatar"
               :alt="leadTestimonial.name"
-              class="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-bronze-light/70 ring-offset-2 ring-offset-ink"
+              class="h-14 w-14 shrink-0 rounded-full bg-paper object-cover ring-2 ring-bronze-light/70 ring-offset-2 ring-offset-ink"
             />
             <p class="text-sm leading-snug text-paper/65">
               <a
@@ -67,7 +98,7 @@ function scrollStrip(direction: 1 | -1) {
             <figure
               v-for="testimonial in moreTestimonials"
               :key="testimonial.id"
-              class="flex w-[86%] shrink-0 snap-start flex-col rounded-xl bg-paper p-6 shadow-sm ring-1 ring-line sm:w-[calc((100%-1.25rem)/2)] sm:p-7 lg:w-full"
+              class="flex w-[86%] shrink-0 snap-start flex-col rounded-xl border border-line bg-paper p-6 sm:w-[calc((100%-1.25rem)/2)] sm:p-7 lg:w-full"
             >
               <Icon name="lucide:quote" class="h-6 w-6 text-bronze" aria-hidden="true" />
               <blockquote class="mt-3 leading-[1.7] text-body">{{ testimonial.quote }}</blockquote>
@@ -76,7 +107,7 @@ function scrollStrip(direction: 1 | -1) {
                   v-if="testimonial.avatar"
                   :src="testimonial.avatar"
                   :alt="testimonial.name"
-                  class="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-line"
+                  class="h-11 w-11 shrink-0 rounded-full bg-paper object-cover ring-1 ring-line"
                 />
                 <p class="text-sm leading-snug text-grey">
                   <a
