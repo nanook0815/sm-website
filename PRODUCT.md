@@ -47,7 +47,7 @@ Vollständiges Corporate Design vorhanden (siehe CI-PDF unter
 `public/images/brand/SteinertMedia CI.pdf`, Assets unter
 `public/images/brand/export/`), 2026-09-22 in die Website übernommen:
 verbindliche Tailwind-Farbtoken (`ink`/`paper`/`bronze`/`bronze-light`/`grey`/
-`line`/`body`), Fonts Plus Jakarta Sans + JetBrains Mono, Logo-Wortmarke als
+`line`/`body`), Fonts Instrument Sans + JetBrains Mono, Logo-Wortmarke als
 Text (kein Pfad). Diese Vorgaben gelten für alles Visuelle, nicht nur für das
 ursprüngliche Rebrand.
 

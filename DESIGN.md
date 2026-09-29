@@ -18,19 +18,19 @@ colors:
     canonical: "#45483F"
 typography:
   display:
-    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontFamily: "Instrument Sans, sans-serif"
     fontSize: "clamp(2.25rem, 5vw, 3.75rem)"
     fontWeight: 500
     lineHeight: 1.15
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontFamily: "Instrument Sans, sans-serif"
     fontSize: "clamp(1.875rem, 3vw, 2.25rem)"
     fontWeight: 500
     lineHeight: 1.15
     letterSpacing: "-0.02em"
   body:
-    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontFamily: "Instrument Sans, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.7
@@ -127,8 +127,8 @@ Ein warmes, gedämpftes Palette-Paar (Graphit/Papier) trägt die Fläche; Bronze
 
 ## Typography
 
-**Display/Headline Font:** Plus Jakarta Sans (mit `sans-serif`-Fallback)
-**Body Font:** Plus Jakarta Sans (mit `sans-serif`-Fallback)
+**Display/Headline Font:** Instrument Sans (mit `sans-serif`-Fallback)
+**Body Font:** Instrument Sans (mit `sans-serif`-Fallback)
 **Label/Mono Font:** JetBrains Mono (mit `monospace`-Fallback)
 
 **Character:** Eine ruhige Grotesk trägt Überschriften und Fließtext gleichermaßen – kein zweites Display-Face. JetBrains Mono taucht nur an technischen/filmischen Stellen auf (Hero-Eyebrow, Foto-Zähler-Badge), wie ein eingeblendeter Timecode.
@@ -140,7 +140,7 @@ Ein warmes, gedämpftes Palette-Paar (Graphit/Papier) trägt die Fläche; Bronze
 - **Label** (500, `text-sm`, `tracking-widest`, `uppercase`, Mono): Hero-Eyebrow ("Video · Foto · Editing"), Foto-Zähler-Badge in der Galerie.
 
 ### Named Rules
-**Die Ein-Schrift-Regel.** Plus Jakarta Sans trägt jede Text-Hierarchie; JetBrains Mono ist ausschließlich für kurze, technisch/filmisch konnotierte Label reserviert, nie für Fließtext.
+**Die Ein-Schrift-Regel.** Instrument Sans trägt jede Text-Hierarchie; JetBrains Mono ist ausschließlich für kurze, technisch/filmisch konnotierte Label reserviert, nie für Fließtext.
 
 ## Layout
 

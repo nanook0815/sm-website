@@ -30,9 +30,9 @@ const timelineTicks = Array.from({ length: 24 })
       class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pb-10 pt-24 sm:px-6 sm:pb-14 max-lg:min-h-[calc(100svh-4rem)] lg:py-32 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16"
     >
       <div class="flex flex-col items-start max-lg:self-end">
-        <h1 class="font-medium tracking-[-0.035em]">
-          <span class="block text-[clamp(1.5rem,4.5vw,3.125rem)] leading-[1.05] text-paper/75 lg:text-paper/50 [text-wrap:balance]">Du brauchst nicht mehr Content.</span>
-          <span class="mt-3 block text-[clamp(2rem,8.5vw,4.5rem)] lg:text-[clamp(2.5rem,7vw,4.5rem)] leading-[0.98] [text-wrap:balance]"><span class="max-lg:block max-lg:whitespace-nowrap">Du brauchst etwas,</span> <span class="max-lg:block max-lg:whitespace-nowrap">das hängen bleibt.</span></span>
+        <h1 class="font-medium tracking-[-0.02em] [font-stretch:82%]">
+          <span class="block text-[clamp(1.575rem,4.83vw,3.15rem)] leading-[1.08] text-paper/75 lg:text-paper/50 [text-wrap:balance]">Du brauchst nicht mehr Content.</span>
+          <span class="mt-3 block text-[clamp(2.52rem,10.5vw,4.99rem)] lg:text-[clamp(3.15rem,8.19vw,4.99rem)] leading-[0.96] [text-wrap:balance]"><span class="max-lg:block max-lg:whitespace-nowrap">Du brauchst etwas,</span> <span class="max-lg:block max-lg:whitespace-nowrap">das hängen bleibt.</span></span>
         </h1>
         <p class="mt-12 max-w-[30rem] max-lg:hidden text-lg leading-[1.7] text-paper/75 lg:mt-14">
           Ideen, Menschen und Geschichten werden zu Konzepten, Bildern und Videos.
@@ -86,5 +86,6 @@ const timelineTicks = Array.from({ length: 24 })
         </figcaption>
       </figure>
     </div>
+
   </section>
 </template>

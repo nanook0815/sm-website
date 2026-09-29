@@ -21,7 +21,7 @@ export default {
         body: '#45483F'
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        sans: ['Instrument Sans', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace']
       }
     }
