@@ -93,7 +93,7 @@ onUnmounted(() => mobileObserver?.disconnect())
               aria-hidden="true"
             ></div>
             <span
-              class="absolute left-4 top-4 rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+              class="absolute left-4 top-4 rounded-md border border-ink/15 bg-paper/95 px-2.5 py-1 font-mono text-[11px] font-medium tracking-[0.14em] text-ink"
             >
               {{ step.index }}
             </span>
@@ -106,7 +106,7 @@ onUnmounted(() => mobileObserver?.disconnect())
           </template>
           <div v-else class="p-6">
             <span
-              class="inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+              class="inline-block w-fit rounded-md border border-ink/15 bg-paper/95 px-2.5 py-1 font-mono text-[11px] font-medium tracking-[0.14em] text-ink"
             >
               {{ step.index }}
             </span>
@@ -183,7 +183,7 @@ onUnmounted(() => mobileObserver?.disconnect())
             <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-line/40 group-focus-visible:ring-2 group-focus-visible:ring-bronze-light" aria-hidden="true"></div>
             <div class="relative flex h-full flex-col justify-between p-6">
               <span
-                class="process-badge inline-block w-fit rounded-full bg-paper/95 px-2.5 py-1 font-mono text-xs font-medium tracking-widest text-ink"
+                class="process-badge inline-block w-fit rounded-md border border-ink/15 bg-paper/95 px-2.5 py-1 font-mono text-[11px] font-medium tracking-[0.14em] text-ink"
               >
                 {{ step.index }}
               </span>

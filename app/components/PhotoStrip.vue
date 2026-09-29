@@ -77,7 +77,7 @@ onMounted(updateArrows)
     </button>
 
     <span
-      class="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-ink/70 px-2.5 py-1 font-mono text-xs text-paper"
+      class="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-md bg-ink/70 px-2.5 py-1 font-mono text-xs text-paper"
     >
       <Icon name="lucide:images" class="h-3.5 w-3.5" />
       {{ props.images.length }} Fotos

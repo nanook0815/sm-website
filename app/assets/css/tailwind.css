@@ -129,23 +129,6 @@
   transform: translateY(10px);
 }
 
-@keyframes timeline-scan {
-  0% {
-    left: -2%;
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
-  100% {
-    left: 102%;
-    opacity: 0;
-  }
-}
-
 /* Hintergrund-Icon: leichter Parallax-Effekt. Die Bewegung ist direkt an die
    Scroll-Position gekoppelt (ohne JavaScript) und bleibt dadurch auch beim
    schnellen Scrollen auf dem Handy flüssig. Über die ganze Seite wandert das
