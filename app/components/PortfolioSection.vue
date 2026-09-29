@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { portfolioItems, type PortfolioCategory } from '~/data/portfolio'
 
-const activeCategory = ref<PortfolioCategory | 'Alle'>('Alle')
+// Geteilter Zustand, damit der Hero (Foto · Video · Editing) den Filter setzen kann.
+const activeCategory = useState<PortfolioCategory | 'Alle'>('portfolioCategory', () => 'Alle')
 
 const portfolioCategories = computed<Array<PortfolioCategory | 'Alle'>>(() => [
   'Alle',

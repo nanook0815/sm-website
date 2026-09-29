@@ -5,6 +5,7 @@ interface Tile {
   description: string
   icon: string
   image: string
+  imagePosition?: string
 }
 
 const tiles: Tile[] = [
@@ -22,7 +23,8 @@ const tiles: Tile[] = [
     description:
       'Fotografie bedeutet für mich, Momente so festzuhalten, dass man sich später nicht nur erinnert, wie sie aussahen, sondern wie sie sich angefühlt haben.',
     icon: 'lucide:camera',
-    image: '/images/leistungen/foto.svg'
+    image: '/images/bts/SM_BTS-1-web.jpg',
+    imagePosition: '50% 30%'
   },
   {
     id: 'editing',
@@ -484,17 +486,22 @@ onUnmounted(() => {
           </button>
         </div>
 
-        <div v-if="selectedTile" class="detail-tile absolute inset-0 flex bg-ink text-paper">
+        <div v-if="selectedTile" class="detail-tile absolute inset-0 flex bg-ink text-paper [container-type:size]">
+          <!-- Alle Kacheln: Text links, Bild rechts. Das Bild blendet nur an der linken Kante aus. -->
           <div class="absolute inset-0 overflow-hidden">
-            <img :src="selectedTile.image" alt="" class="h-full w-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-ink/80 to-ink" />
+            <img
+              :src="selectedTile.image"
+              alt=""
+              :style="{ objectPosition: selectedTile.imagePosition ?? '50% 50%' }"
+              class="absolute right-0 top-0 h-full w-full object-cover opacity-25 sm:w-[56%] sm:opacity-100 sm:[-webkit-mask-image:linear-gradient(to_right,transparent_0,black_22%)] sm:[mask-image:linear-gradient(to_right,transparent_0,black_22%)]"
+            />
           </div>
 
           <button
             ref="backButtonRef"
             type="button"
             aria-label="Zurück zur Übersicht"
-            class="group absolute left-[6%] top-[6%] z-10 flex aspect-square h-[13%] items-center justify-center rounded-full bg-paper/10 text-paper backdrop-blur-sm transition-colors hover:bg-bronze focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
+            class="group absolute left-[6%] top-[6%] z-10 flex aspect-square h-[16%] items-center justify-center rounded-full sm:h-[13%] bg-paper/10 text-paper backdrop-blur-sm transition-colors hover:bg-bronze focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
             @click="closeTile"
           >
             <Icon
@@ -504,12 +511,12 @@ onUnmounted(() => {
             />
           </button>
 
-          <div class="relative flex h-full w-full flex-col items-start justify-center gap-2 py-[8%] pl-[42%] pr-[8%]">
-            <span class="flex aspect-square h-[18%] items-center justify-center">
+          <div class="relative flex h-full w-full flex-col items-start justify-center gap-2 pb-[6%] pl-[8%] pr-[8%] pt-[20%] sm:py-[8%] sm:pr-[56%]">
+            <span class="hidden aspect-square h-[18%] sm:flex items-center justify-center">
               <Icon :name="selectedTile.icon" mode="svg" class="h-full w-full [stroke-width:1.25] text-bronze-light" />
             </span>
-            <h3 class="font-mono text-[1.5em] font-semibold uppercase tracking-widest">{{ selectedTile.title }}</h3>
-            <p class="max-w-[26ch] text-[0.7em] leading-relaxed text-paper/70">{{ selectedTile.description }}</p>
+            <h3 class="font-mono text-[4.6cqw] font-semibold sm:text-[1.5em] uppercase tracking-widest">{{ selectedTile.title }}</h3>
+            <p class="text-[3.5cqw] leading-[1.35] sm:max-w-[32ch] sm:text-[1.1em] sm:leading-snug text-paper/70">{{ selectedTile.description }}</p>
           </div>
         </div>
       </div>

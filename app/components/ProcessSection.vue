@@ -118,21 +118,40 @@ onUnmounted(() => mobileObserver?.disconnect())
         </div>
       </div>
 
-      <div
-        class="mt-4 flex justify-center gap-2 lg:hidden"
-        role="tablist"
-        aria-label="Ablauf-Schritte"
-      >
+      <!-- Mobile & Tablet: gleiche Linie mit Papierflieger wie am Desktop. Der
+           Button sitzt immer unter der gerade sichtbaren Karte und ist der
+           Kontakt-Link; die Punkte auf der Linie springen zu den Schritten. -->
+      <div class="relative mt-6 h-11 lg:hidden" role="tablist" aria-label="Ablauf-Schritte">
+        <div class="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-line" aria-hidden="true"></div>
+        <div
+          class="pointer-events-none absolute left-0 top-1/2 h-px bg-bronze-light transition-[width] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-[1ms]"
+          :style="{ width: `${(mobileActiveIndex + 0.5) * (100 / processSteps.length)}%` }"
+          aria-hidden="true"
+        ></div>
         <button
           v-for="(step, index) in processSteps"
           :key="step.id"
           type="button"
-          class="h-2 rounded-full transition-[width,background-color] duration-300"
-          :class="index === mobileActiveIndex ? 'w-5 bg-bronze' : 'w-2 bg-line'"
+          class="absolute top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+          :style="{ left: `${(index + 0.5) * (100 / processSteps.length)}%` }"
           :aria-label="`Zu Schritt ${step.index} springen`"
           :aria-current="index === mobileActiveIndex ? 'true' : undefined"
           @click="scrollToMobileCard(index)"
-        ></button>
+        >
+          <span
+            class="h-2 w-2 rounded-full transition-colors"
+            :class="index <= mobileActiveIndex ? 'bg-bronze-light' : 'bg-line'"
+          ></span>
+        </button>
+        <a
+          href="mailto:info@steinertmedia.de?subject=Projektanfrage"
+          aria-label="Kontakt aufnehmen"
+          title="Kontakt aufnehmen"
+          class="absolute top-1/2 z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-bronze-light text-ink shadow-sm transition-[left] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-110 motion-reduce:duration-[1ms]"
+          :style="{ left: `${(mobileActiveIndex + 0.5) * (100 / processSteps.length)}%` }"
+        >
+          <Icon name="lucide:send" mode="svg" class="h-4 w-4" />
+        </a>
       </div>
 
       <!-- Desktop: "Blende öffnen" – die Kachel öffnet sich per Clip-Maske nach
