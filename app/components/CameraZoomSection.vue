@@ -349,7 +349,7 @@ onUnmounted(() => {
 
 <template>
   <section id="leistungen" ref="sectionRef" class="relative" :style="{ height: sectionHeight }">
-    <div ref="stageRef" class="sticky top-0 h-[100svh] w-full overflow-hidden bg-paper">
+    <div ref="stageRef" class="sticky top-0 h-[100svh] w-full overflow-hidden">
       <div
         ref="headingRef"
         class="pointer-events-none absolute left-0 top-0 z-10 max-w-[16rem] origin-top-left text-center sm:max-w-sm sm:text-right"
@@ -364,27 +364,29 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <img
-        ref="img1Ref"
-        src="/images/setup/Kamera_setup_2.png"
-        alt="Kamera-Setup mit externem Monitor auf dem Rig"
-        decoding="async"
-        draggable="false"
-        class="absolute left-0 top-0 max-w-none origin-top-left select-none [-webkit-mask-image:linear-gradient(to_bottom,black_74%,transparent_86%)] [mask-image:linear-gradient(to_bottom,black_74%,transparent_86%)]"
-      />
-      <img
-        ref="img2Ref"
-        src="/images/setup/Kamera_setup_2_blurr.png"
-        alt="Monitor formatfüllend, Kamera im Hintergrund unscharf"
-        decoding="async"
-        draggable="false"
-        class="absolute left-0 top-0 max-w-none origin-top-left select-none opacity-0"
-      />
-
+      <!-- Weicher Ausklang am unteren Bildschirmrand als Maske (zu transparent)
+           statt als weißer Verlauf – so bleibt das Hintergrund-Icon aus dem
+           Layout auch hinter dem Setup-Bild sichtbar. -->
       <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[11vh] bg-gradient-to-t from-paper from-0% to-transparent to-35% sm:h-[13vh]"
-      />
+        class="pointer-events-none absolute inset-0 [-webkit-mask-image:linear-gradient(to_top,transparent_0,black_4vh)] [mask-image:linear-gradient(to_top,transparent_0,black_4vh)] sm:[-webkit-mask-image:linear-gradient(to_top,transparent_0,black_4.5vh)] sm:[mask-image:linear-gradient(to_top,transparent_0,black_4.5vh)]"
+      >
+        <img
+          ref="img1Ref"
+          src="/images/setup/Kamera_setup_2.png"
+          alt="Kamera-Setup mit externem Monitor auf dem Rig"
+          decoding="async"
+          draggable="false"
+          class="absolute left-0 top-0 max-w-none origin-top-left select-none [-webkit-mask-image:linear-gradient(to_bottom,black_74%,transparent_86%)] [mask-image:linear-gradient(to_bottom,black_74%,transparent_86%)]"
+        />
+        <img
+          ref="img2Ref"
+          src="/images/setup/Kamera_setup_2_blurr.png"
+          alt="Monitor formatfüllend, Kamera im Hintergrund unscharf"
+          decoding="async"
+          draggable="false"
+          class="absolute left-0 top-0 max-w-none origin-top-left select-none opacity-0"
+        />
+      </div>
 
       <div
         ref="tilesRef"
