@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nuxt/icon": "^2.5.1",
+    "@vercel/analytics": "^2.0.1",
     "nuxt": "^4.5.2",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
@@ -25,5 +26,10 @@
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.7"
+  },
+  "overrides": {
+    "@vercel/analytics": {
+      "vue-router": "$vue-router"
+    }
   }
 }
