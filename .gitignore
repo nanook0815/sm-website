@@ -32,3 +32,7 @@ public/images/portfolio/foto/Hochzeit/
 # heruntergeladen/vorgehalten statt versioniert
 .claude/skills/impeccable/scripts/bin/
 .github/skills/impeccable/scripts/bin/
+.agents/skills/impeccable/scripts/bin/
+
+# Photoshop-Quelldateien (zu groß fürs Repo, GitHub-Limit 100 MB)
+*.psd
