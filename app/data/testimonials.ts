@@ -12,6 +12,21 @@ export interface Testimonial {
 // Reihenfolge = Gewichtung: Der erste Eintrag wird groß hervorgehoben.
 export const testimonials: Testimonial[] = [
   {
+    id: 'davide-mercatali',
+    quote:
+      'In den letzten vier Jahren habe ich mit dutzenden Editoren gearbeitet. Chris ist mit Abstand der verlässlichste.',
+    fullQuote: [
+      'In den letzten vier Jahren habe ich mit dutzenden Editoren gearbeitet. Chris ist mit Abstand der verlässlichste.',
+      'Seit über einem Jahr schneidet er für uns Shorts, Interviews und YouTube-Videos. Er arbeitet proaktiv, antwortet schnell und ist dazu ein richtig sympathischer Mensch.',
+      'Was ihn besonders ausmacht, zeigt sich, wenn es brennt: Dann geht er immer die Extrameile, ohne dass ich darum bitten muss. Genau das unterscheidet einen guten Editor von einem, mit dem man langfristig arbeiten will.',
+      'Wer als Unternehmen oder Agentur einen Editor sucht, auf den man sich verlassen kann, sollte unbedingt mit Chris sprechen.'
+    ],
+    name: 'Davide Mercatali',
+    company: 'Gründer | Convinze',
+    link: 'https://convinze.de/',
+    avatar: '/images/testimonial/davide-mercatali-384.jpg'
+  },
+  {
     id: 'relax4me',
     quote:
       'Alle meine Wünsche und Vorstellungen wurden mit unglaublich viel Liebe zum Detail umgesetzt. Chris arbeitet mit sehr viel Herz und schafft es, sich zu 100 % in das jeweilige Thema hineinzuversetzen.',
