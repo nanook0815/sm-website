@@ -6,12 +6,62 @@ const leadTestimonial = testimonials[0]
 const moreTestimonials = testimonials.slice(1)
 
 const leadOpen = ref(false)
+// Aufgeklappte Kundenstimme im Karussell (nur eine zur Zeit)
+const openId = ref<string | null>(null)
 
+const gridRef = ref<HTMLElement | null>(null)
 const stripRef = ref<HTMLElement | null>(null)
+
+// Beim Aufklappen wird die zugeklappte Höhe festgehalten: Nur die geöffnete
+// Kachel wird länger, alle anderen behalten ihre bisherige Höhe.
+const rowMinHeight = ref<number | null>(null)
+const cardMinHeight = ref<number | null>(null)
+let openedAtScroll = 0
+
+function freezeHeights() {
+  if (leadOpen.value || openId.value) return
+  if (gridRef.value && window.matchMedia('(min-width: 1024px)').matches) rowMinHeight.value = gridRef.value.offsetHeight
+  if (stripRef.value) cardMinHeight.value = stripRef.value.clientHeight
+}
+
+function releaseHeights() {
+  if (leadOpen.value || openId.value) return
+  rowMinHeight.value = null
+  cardMinHeight.value = null
+}
+
+function toggleLead() {
+  if (!leadOpen.value) freezeHeights()
+  leadOpen.value = !leadOpen.value
+  releaseHeights()
+}
+
+function toggleCard(id: string) {
+  if (openId.value === id) {
+    openId.value = null
+  } else {
+    freezeHeights()
+    openId.value = id
+    openedAtScroll = stripRef.value?.scrollLeft ?? 0
+  }
+  releaseHeights()
+}
+
+function closeCard() {
+  openId.value = null
+  releaseHeights()
+}
+
+// Wer zur nächsten Stimme weiterwischt, sieht sie zugeklappt
+function onStripScroll() {
+  const el = stripRef.value
+  if (openId.value && el && Math.abs(el.scrollLeft - openedAtScroll) > 40) closeCard()
+}
 
 function scrollStrip(direction: 1 | -1) {
   const el = stripRef.value
   if (!el) return
+  closeCard()
   el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: 'smooth' })
 }
 </script>
@@ -26,11 +76,12 @@ function scrollStrip(direction: 1 | -1) {
         Was Kund:innen über die Zusammenarbeit sagen.
       </p>
 
-      <div class="mt-10 grid gap-6 lg:grid-cols-12">
+      <div ref="gridRef" class="mt-10 grid gap-6 lg:grid-cols-12" :class="rowMinHeight ? 'lg:items-start' : ''">
         <figure
           v-if="leadTestimonial"
           v-reveal
           class="flex flex-col rounded-xl bg-ink px-6 py-10 text-paper shadow-sm sm:px-10 lg:col-span-7"
+          :style="rowMinHeight ? { minHeight: `${rowMinHeight}px` } : undefined"
         >
           <Icon name="lucide:quote" class="h-10 w-10 text-bronze-light" aria-hidden="true" />
           <!-- Mit Volltext: immer von oben lesbar, zugeklappt nur unten abgeschnitten -->
@@ -55,7 +106,7 @@ function scrollStrip(direction: 1 | -1) {
             type="button"
             :aria-expanded="leadOpen"
             class="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-bronze-light transition-colors hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-light"
-            @click="leadOpen = !leadOpen"
+            @click="toggleLead"
           >
             {{ leadOpen ? 'Weniger anzeigen' : 'Ganzes Feedback lesen' }}
             <Icon
@@ -88,20 +139,46 @@ function scrollStrip(direction: 1 | -1) {
           </figcaption>
         </figure>
 
-        <div v-if="moreTestimonials.length" class="flex min-w-0 flex-col lg:col-span-5">
+        <div
+          v-if="moreTestimonials.length"
+          class="flex min-w-0 flex-col lg:col-span-5"
+          :style="rowMinHeight ? { minHeight: `${rowMinHeight}px` } : undefined"
+        >
           <div
             ref="stripRef"
             class="flex flex-1 snap-x snap-mandatory gap-5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            :class="cardMinHeight ? 'items-start' : ''"
             tabindex="0"
             aria-label="Weitere Kundenstimmen, seitlich scrollbar"
+            @scroll.passive="onStripScroll"
           >
             <figure
               v-for="testimonial in moreTestimonials"
               :key="testimonial.id"
               class="flex w-[86%] shrink-0 snap-start flex-col rounded-xl border border-line bg-paper p-6 sm:w-[calc((100%-1.25rem)/2)] sm:p-7 lg:w-full"
+              :style="cardMinHeight ? { minHeight: `${cardMinHeight}px` } : undefined"
             >
               <Icon name="lucide:quote" class="h-6 w-6 text-bronze" aria-hidden="true" />
-              <blockquote class="mt-3 leading-[1.7] text-body">{{ testimonial.quote }}</blockquote>
+              <!-- Zugeklappt die Kurzfassung, aufgeklappt der ganze Text -->
+              <blockquote v-if="testimonial.fullQuote && openId === testimonial.id" class="mt-3 space-y-3 leading-[1.7] text-body">
+                <p v-for="(paragraph, index) in testimonial.fullQuote" :key="index">{{ paragraph }}</p>
+              </blockquote>
+              <blockquote v-else class="mt-3 leading-[1.7] text-body">{{ testimonial.quote }}</blockquote>
+              <button
+                v-if="testimonial.fullQuote"
+                type="button"
+                :aria-expanded="openId === testimonial.id"
+                class="mt-3 inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-bronze transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze"
+                @click="toggleCard(testimonial.id)"
+              >
+                {{ openId === testimonial.id ? 'Weniger anzeigen' : 'Ganzes Feedback lesen' }}
+                <Icon
+                  name="lucide:chevron-down"
+                  class="h-4 w-4 transition-transform"
+                  :class="openId === testimonial.id ? 'rotate-180' : ''"
+                  aria-hidden="true"
+                />
+              </button>
               <figcaption class="mt-auto flex items-center gap-3 pt-6">
                 <img
                   v-if="testimonial.avatar"
