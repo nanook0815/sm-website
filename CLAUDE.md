@@ -56,6 +56,10 @@ bleibt innerhalb der bestehenden Struktur unter `app/`.
 - Der GitHub-Actions-Workflow (`.github/workflows/build-check.yml`) führt bei
   jedem Pull Request automatisch `npm run build` aus. Ein PR sollte erst
   gemergt werden, wenn dieser Check grün ist.
+- **Claude erstellt den PR und mergt ihn selbst** (per `gh`), damit der
+  Owner nicht auf GitHub klicken muss: PR anlegen, auf grüne Checks warten,
+  dann dem Owner kurz sagen, dass alles grün ist, und erst nach seinem
+  „ja“ mergen. Nie mergen, solange ein Check rot oder noch offen ist.
 - Aussagekräftige Commit-Messages verwenden, die beschreiben, warum eine
   Änderung gemacht wurde, nicht nur was geändert wurde.
 
