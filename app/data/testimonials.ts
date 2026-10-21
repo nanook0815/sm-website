@@ -22,7 +22,9 @@ export const testimonials: Testimonial[] = [
       'Wer als Unternehmen oder Agentur einen Editor sucht, auf den man sich verlassen kann, sollte unbedingt mit Chris sprechen.'
     ],
     name: 'Davide Mercatali',
-    company: 'Founder'
+    company: 'Gründer | Convinze',
+    link: 'https://convinze.de/',
+    avatar: '/images/testimonial/convinze-192.png'
   },
   {
     id: 'relax4me',
