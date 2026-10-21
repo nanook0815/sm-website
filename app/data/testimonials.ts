@@ -24,7 +24,7 @@ export const testimonials: Testimonial[] = [
     name: 'Davide Mercatali',
     company: 'Gründer | Convinze',
     link: 'https://convinze.de/',
-    avatar: '/images/testimonial/convinze-192.png'
+    avatar: '/images/testimonial/davide-mercatali-384.jpg'
   },
   {
     id: 'relax4me',
