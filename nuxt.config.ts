@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/icon'],
+  // Schriften werden lokal ausgeliefert (keine Anfrage an Google, DSGVO)
+  css: [
+    '@fontsource-variable/instrument-sans/wdth.css',
+    '@fontsource/jetbrains-mono/400.css',
+    '@fontsource/jetbrains-mono/500.css'
+  ],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css'
   },
@@ -38,12 +44,6 @@ export default defineNuxtConfig({
         { name: 'twitter:image', content: 'https://www.steinertmedia.de/images/og/og-image.png' }
       ],
       link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500&display=swap'
-        },
         {
           rel: 'icon',
           type: 'image/svg+xml',

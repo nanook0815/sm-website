@@ -13,7 +13,7 @@ useHead({
     <div class="mt-10 space-y-10 text-body">
       <section>
         <h2 class="font-mono text-sm font-medium uppercase tracking-widest text-grey">
-          Angaben gemäß § 5 TMG
+          Angaben gemäß § 5 DDG
         </h2>
         <p class="mt-2 leading-[1.7]">
           Christoph Steinert<br />
@@ -28,15 +28,21 @@ useHead({
           E-Mail:
           <a href="mailto:info@steinertmedia.de" class="text-bronze hover:underline"
             >info@steinertmedia.de</a
-          >
+          ><br />
+          Telefon:
+          <a href="tel:+4953319058744" class="text-bronze hover:underline">05331 9058744</a>
         </p>
       </section>
 
       <section>
         <h2 class="font-mono text-sm font-medium uppercase tracking-widest text-grey">
-          Redaktionell verantwortlich
+          Verantwortlich nach § 18 Abs. 2 MStV
         </h2>
-        <p class="mt-2 leading-[1.7]">Christoph Steinert</p>
+        <p class="mt-2 leading-[1.7]">
+          Christoph Steinert<br />
+          Grüner Platz 26a<br />
+          38302 Wolfenbüttel
+        </p>
       </section>
 
       <section>
